@@ -92,7 +92,7 @@ export default function Karyawan() {
        
 
         {/* Title */}
-        <div className=" mt-5 bg-gray-200 pl-10  ">
+        <div className=" mt-5 bg-gray-200 pl-10 flex ">
           <div>
         <h1 className="text-xl font-semibold mb-4  pt-9 ">Karyawan</h1>
 
