@@ -8,35 +8,34 @@ interface Employee {
   name: string;
   role: string;
 }
-const location = useLocation();
-    const pathname = location.pathname;
-
-    useEffect(() => {
-        console.log("Current path:", pathname);
-    }, [pathname])
-
-const employees: Employee[] = [
-  { name: "Thomas Seisei", role: "Senior Admin Support" },
-  { name: "Verry Irawan", role: "Senior FullStack Developer" },
-  { name: "Irvan Gunawan", role: "Senior FullStack Developer" },
-  { name: "Salsabila", role: "Senior UI/UX Designer" },
-  { name: "Astrid Faradilla", role: "Staff Admin Support" },
-  { name: "Radian Rasyid", role: "Staff Admin Support" },
-  { name: "Sheila Zahra", role: "Staff Admin Support" },
-  { name: "Sava Alya Andini", role: "Staff Admin Support" },
-  { name: "Tiara Bisrina", role: "Staff Admin Support" },
-  { name: "Amanda", role: "Staff Admin Support" },
-  { name: "Disha Syadiva", role: "Staff Admin Support" },
-  { name: "Winner Chicken", role: "Staff Admin Support" },
-];
-
 
 export default function Karyawan() {
   const [search, setSearch] = useState("");
+  const employees: Employee[] = [
+    { name: "Thomas Seisei", role: "Senior Admin Support" },
+    { name: "Verry Irawan", role: "Senior FullStack Developer" },
+    { name: "Irvan Gunawan", role: "Senior FullStack Developer" },
+    { name: "Salsabila", role: "Senior UI/UX Designer" },
+    { name: "Astrid Faradilla", role: "Staff Admin Support" },
+    { name: "Radian Rasyid", role: "Staff Admin Support" },
+    { name: "Sheila Zahra", role: "Staff Admin Support" },
+    { name: "Sava Alya Andini", role: "Staff Admin Support" },
+    { name: "Tiara Bisrina", role: "Staff Admin Support" },
+    { name: "Amanda", role: "Staff Admin Support" },
+    { name: "Disha Syadiva", role: "Staff Admin Support" },
+    { name: "Winner Chicken", role: "Staff Admin Support" },
+  ];
 
   const filteredEmployees = employees.filter((emp) =>
     emp.name.toLowerCase().includes(search.toLowerCase())
   );
+
+  const location = useLocation();
+  const pathname = location.pathname;
+
+  useEffect(() => {
+    console.log("Current path:", pathname);
+  }, [pathname])
 
   return (
     <div className="flex bg-[#F6F6F8] font-sans">
