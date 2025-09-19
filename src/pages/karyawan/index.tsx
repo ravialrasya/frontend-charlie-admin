@@ -1,12 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaUser, } from "react-icons/fa6";
 import Sidebar from "../../components/layout/sidebar";
 import Header from "../../components/layout/header";
+import { useLocation } from "react-router-dom";
 
 interface Employee {
   name: string;
   role: string;
 }
+const location = useLocation();
+    const pathname = location.pathname;
+
+    useEffect(() => {
+        console.log("Current path:", pathname);
+    }, [pathname])
 
 const employees: Employee[] = [
   { name: "Thomas Seisei", role: "Senior Admin Support" },
@@ -22,6 +29,7 @@ const employees: Employee[] = [
   { name: "Disha Syadiva", role: "Staff Admin Support" },
   { name: "Winner Chicken", role: "Staff Admin Support" },
 ];
+
 
 export default function Karyawan() {
   const [search, setSearch] = useState("");
@@ -54,10 +62,10 @@ export default function Karyawan() {
             />
 
 
-            <select className="rounded-lg px-4 py-2 ml-200 bg-white ring-2 ring-blue-500  focus:ring-blue-600 ">
+            <select className="rounded-lg px-4 py-2 ml-200 cursor-pointer bg-white ring-2 ring-blue-500  focus:ring-blue-600 ">
               <option>Departement</option>
             </select>
-            <select className="rounded-lg px-4 py-2  bg-white ring-2 ring-blue-500  focus:ring-blue-600 ">
+            <select className="rounded-lg px-4 py-2 cursor-pointer bg-white ring-2 ring-blue-500  focus:ring-blue-600 ">
               <option>Job Level</option>
             </select>
 

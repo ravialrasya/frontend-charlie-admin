@@ -5,6 +5,7 @@ import HomePage from './pages/homepage'
 import Karyawan from './pages/karyawan'
 import BlankPage from './pages/blank'
 import TimeReportPage from './pages/time-report'
+import DetailKaryawan from './DetailKaryawan'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
       <Route path='/login' element={<LoginPage />} />
       <Route path='/karyawan' element={<Karyawan />} />
       <Route path='/time-report' element={<TimeReportPage />} />
+      <Route path='/detail-karyawan' element={<DetailKaryawan/>}/>
     </Routes>
   )
 }

@@ -12,16 +12,16 @@ const HomePage: React.FC = () => {
         <Header />
 
         {/* Stats Cards */}
-        <div className="p-10 mt-5">
-          <div className="bg-gray-100 pl-8">
+        <div className="p-10 ">
+          <div className="bg-gray-100">
             <h1 className="text-xl font-semibold ">Dashboard</h1>
             <p className="text-sm text-gray-500">17 September 2024</p>
           </div>
-          <div className="grid grid-cols-4 gap-4 p-6">
-            <div className="bg-white shadow rounded-2xl p-4 flex items-center justify-between">
+          <div className="grid grid-cols-4 gap-8 p-6">
+            <div className="bg-white shadow rounded-2xl p-4 h-[15vh] flex flex-cols items-center justify-between">
 
               <div>
-                <p className="text-sm text-gray-600 mb-1  ">Total Absensi <br />(Office)</p>
+                <p className=" text-gray-600 mb-1  ">Total Absensi <br />(Office)</p>
                 <p className="text-2xl font-bold">20</p>
               </div>
               <div><Building2 className="w-6 h-6 text-blue-600" /></div>
