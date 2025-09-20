@@ -1,17 +1,19 @@
-import { Bell } from 'lucide-react'
-import { FaUser } from 'react-icons/fa6'
+
+
 
 function Header() {
     return (
         <div className='w-full bg-white shadow-sm'>
             <header className="py-3 px-6">
                 <div className="flex justify-end gap-4">
-                    <button className="relative bg-gray-200 rounded-lg py-3 px-3 cursor-pointer">
-                        <span className="absolute ml-2 -mt-2 bg-red-500 text-red-500 text-xs rounded-full w-2 h-2">.</span>
-                        <Bell className="w-5 h-5 text-gray-600 " />
+                    <div>
+                    <button className="relative bg-[#B5B5B51A] rounded-lg w-[48px] h-[48px] cursor-pointer items-center justify-center flex">
+                        <span className="absolute ml-6 -mt-7  bg-red-500 text-red-500 text-xs rounded-full w-2 h-2 ">.</span>
+                        <img src="/img/clarity_notification-line.png" alt="" width={24} height={24}/>
                     </button>
-                    <button className="rounded-full bg-gray-200 py-3 px-3 cursor-pointer">
-                        <FaUser className="relative text-blue-600  w-5 h-5" />
+                    </div>
+                    <button className="rounded-full bg-[#1176BC1A] w-[40px] h-[40px] cursor-pointer items-center justify-center flex">
+                        <img src="/img/user (1) 1.png" alt="" width={20} height={20} />
                     </button>
                     <div className="font-medium ">
                         <select className="rounded-lg outline-none py-2 cursor-pointer">
