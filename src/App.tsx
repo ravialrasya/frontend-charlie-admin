@@ -6,6 +6,10 @@ import Karyawan from './pages/karyawan'
 import BlankPage from './pages/blank'
 import TimeReportPage from './pages/time-report'
 import DetailKaryawan from './DetailKaryawan'
+import DetailAbsensi from './DetailAbsensi'
+import Profile from './Profile'
+
+
 
 function App() {
 
@@ -17,6 +21,9 @@ function App() {
       <Route path='/karyawan' element={<Karyawan />} />
       <Route path='/time-report' element={<TimeReportPage />} />
       <Route path='/detail-karyawan' element={<DetailKaryawan/>}/>
+      <Route path='/detail-absensi' element={<DetailAbsensi />}/>
+      <Route path='/profile-karyawan' element={<Profile />}/>
+      
     </Routes>
   )
 }

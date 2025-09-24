@@ -3,6 +3,10 @@
 import { useState } from "react";
 import Header from "../components/layout/header";
 import Sidebar from "../components/layout/sidebar";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+
 
 
 
@@ -13,9 +17,18 @@ interface TimeReport {
   lokasi: string;
   typedata: string;
 }
+interface Absensi {
+  tanggal: string;
+  waktu: string;
+  waktudua: string;
+  lokasi: string;
+  typedata: string;
+}
+
 
 export default function EmployeeDetail() {
-  const [tab, setTab] = useState<"time" | "Time Report">("Time Report");
+  const navigate = useNavigate();
+  const [tab, setTab] = useState<"Absensi" | "Time Report">("Time Report");
 
   const absensiData: TimeReport[] = [
     { tanggal: "10 Sep 2024", waktu: "08:00", typedata: "-", waktudua: "16:00",lokasi: "Total jam kerja : 8 Jam" },
@@ -24,6 +37,16 @@ export default function EmployeeDetail() {
     { tanggal: "07 Sep 2024", waktu: "08:00", typedata: "-", waktudua: "16:00",lokasi: "Total jam kerja : 8 Jam" },
     { tanggal: "06 Sep 2024", waktu: "08:00", typedata: "-", waktudua: "16:00",lokasi: "Total jam kerja : 8 Jam" },
   ];
+
+  const absensi: Absensi[] = [
+    { tanggal: "06 Sep 2024", waktu: "08:00", typedata: "-", waktudua: "16:00",lokasi: "Office" },
+    { tanggal: "05 Sep 2024", waktu: "08:00", typedata: "-", waktudua: "16:00",lokasi: "Office" },
+    { tanggal: "04 Sep 2024", waktu: "08:00", typedata: "-", waktudua: "16:00",lokasi: "Office" },
+    { tanggal: "03 Sep 2024", waktu: "08:00", typedata: "-", waktudua: "16:00",lokasi: "Office" },
+    { tanggal: "02 Sep 2024", waktu: "08:00", typedata: "-", waktudua: "16:00",lokasi: "Office" },
+  ];
+
+  
   
 
   return (
@@ -47,7 +70,7 @@ export default function EmployeeDetail() {
           <p className="text-[#0E64D1]">161188559</p>
           <p className="text-gray-500">Staff Admin</p>
         </div>
-        <button className="ml-auto bg-[#0E64D1] px-4 py-2 text-white rounded-lg hover:shadow-md transition cursor-pointer">
+        <button onClick={() => navigate("/profile-karyawan")} className="ml-auto bg-[#0E64D1] px-4 py-2 text-white rounded-lg hover:shadow-md transition cursor-pointer">
           Lihat Profil Karyawan
         </button>
       </div>
@@ -94,22 +117,22 @@ export default function EmployeeDetail() {
 
       {/* Tabs */}
       <div className="flex gap-[10px]  mt-8 " >
-        <div className="flex space-x-[141.5px] ">
+        <div className="flex ">
         <button
           onClick={() => setTab("Time Report")}
-          className={`pb-2 ${
+          className={`pb-2 w-[271.5px] h-[25px] cursor-pointer ${
             tab === "Time Report"
-              ? "border-b-[1px] border-[#0E64D1] text-[#0E64D1] font-inter font-bold text-[14px]  w-[271.5px] h-[25px]"
+              ? "border-b-[1px] border-[#0E64D1] text-[#0E64D1] font-inter font-bold text-[14px]"
               : "text-[#556376] text-[14px]"
           }`}
         >
           Time Report
         </button>
         <button
-          onClick={() => setTab("time")}
-          className={`pb-2 ${
-            tab === "time"
-              ? "border-b-[1px] border-[#0E64D1] text-[#0E64D1] font-inter font-bold text-[14px]  w-[271.5px] h-[25px]"
+          onClick={() => setTab("Absensi")}
+          className={`pb-2 w-[271.5px] h-[25px] cursor-pointer ${
+            tab === "Absensi"
+              ? "border-b-[1px] border-[#0E64D1] text-[#0E64D1] font-inter font-bold text-[14px]"
               : "text-[#556376] text-[14px]"
           }`}
         >
@@ -123,6 +146,7 @@ export default function EmployeeDetail() {
       </div>
 
       {/* Absensi List */}
+      <Link to='/detail-absensi'>
       {tab === "Time Report" && (
         <div className="mt-4 space-y-4">
           {absensiData.map((item, index) => (
@@ -133,7 +157,7 @@ export default function EmployeeDetail() {
               <div>
               <div className="flex space-x-2 mb-2">
                 <p className="flex "><img src="/img/calendar-minus 1.png" alt="" width={20} height={20} className="mr-2" />{item.tanggal}</p>
-                <span className="flex font-bold space-x-2">
+                <span className="flex font-bold space-x-1">
                   (
                 <p className="text-blue-500 ">{item.waktu}</p>
                 <p>{item.typedata}</p>
@@ -146,10 +170,39 @@ export default function EmployeeDetail() {
               <button className="text-gray-500">{">"}</button>
             </div>
           ))}
+     
         </div>
       )}
+      {tab === "Absensi" && (
+        <div className="mt-4 space-y-4">
+          {absensi.map((item, index) => (
+            <div
+              key={index}
+              className="bg-white p-4 rounded-lg flex justify-between items-center cursor-pointer hover:shadow-sm"
+            >
+              <div>
+              <div className="flex space-x-2 mb-2">
+                <p className="flex "><img src="/img/calendar-minus 1.png" alt="" width={20} height={20} className="mr-2" />{item.tanggal}</p>
+                <span className="flex font-bold space-x-1">
+                  (
+                <p className="text-blue-500 ">{item.waktu}</p>
+                <p>{item.typedata}</p>
+                <p className="text-red-500 ">{item.waktudua}</p>
+                  )
+                </span>
+              </div>
+              <p className="text-gray-300">{item.lokasi}</p>
+              </div>
+              <button className="text-gray-500">{">"}</button>
+            </div>
+          ))}
+     
+        </div>
+      )}
+      </Link>
        </div>
       </div>
     </div>
   );
 }
+

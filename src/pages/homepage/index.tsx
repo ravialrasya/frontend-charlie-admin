@@ -1,5 +1,4 @@
 import React from "react";
-import { Eye, Building2, Clock, FilePlus } from "lucide-react";
 import Sidebar from "../../components/layout/sidebar";
 import Header from "../../components/layout/header";
 
@@ -18,13 +17,13 @@ const HomePage: React.FC = () => {
             <p className="text-sm text-gray-500">17 September 2024</p>
           </div>
           <div className="grid grid-cols-4 gap-8 p-6">
-            <div className="bg-white shadow rounded-2xl p-4 h-[15vh] flex flex-cols items-center justify-between">
+            <div className="bg-white shadow rounded-2xl p-4 h-[100] w-[243.75] flex flex-cols items-center justify-between">
 
               <div>
                 <p className=" text-gray-600 mb-1  ">Total Absensi <br />(Office)</p>
                 <p className="text-2xl font-bold">20</p>
               </div>
-              <div><Building2 className="w-6 h-6 text-blue-600" /></div>
+              <img src="/img/Vector.png" alt="" width={24} height={24}  />
             </div>
             <div className="bg-white shadow rounded-2xl p-4 flex items-center justify-between">
 
@@ -32,7 +31,7 @@ const HomePage: React.FC = () => {
                 <p className="text-sm text-gray-600">Total Absensi<br />(Dinas)</p>
                 <p className="text-2xl font-bold">3</p>
               </div>
-              <Building2 className="w-6 h-6 text-blue-600" />
+              <img src="/img/Vector (1).png" alt="" width={24} height={24} />
 
             </div>
             <div className="bg-white shadow rounded-2xl p-4 flex  items-center justify-between">
@@ -40,14 +39,14 @@ const HomePage: React.FC = () => {
                 <p className="text-sm text-gray-600">Total Time Report</p>
                 <p className="text-2xl font-bold">15</p>
               </div>
-              <Clock className="w-6 h-6 text-blue-600 " />
+              <img src="/img/bxs_report.png" alt="" width={24} height={24} />
             </div>
             <div className="bg-white shadow rounded-2xl p-4 flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600">Total Proposal Advance</p>
                 <p className="text-2xl font-bold">5</p>
               </div>
-              <FilePlus className="w-6 h-6 text-blue-600 " />
+              <img src="/img/Vector (2).png" alt="" width={24} height={24} />
             </div>
           </div>
 
@@ -76,7 +75,7 @@ const HomePage: React.FC = () => {
                       <td className="px-4 py-2">Office</td>
                       <td className="px-4 py-2 text-blue-600 font-medium">08:00</td>
                       <td className="px-4 py-2 text-red-600 font-medium">16:00</td>
-                      <td className="px-4 py-2"><Eye className="w-4 h-4 text-blue-600" /></td>
+                      <td className="px-4 py-2"><img src="/img/mdi_eye.png" alt="" /></td>
                     </tr>
                   ))}
                 </tbody>
@@ -95,6 +94,7 @@ const HomePage: React.FC = () => {
                     <th className="px-4 py-2">Clock In</th>
                     <th className="px-4 py-2">Clock Out</th>
                     <th className="px-4 py-2">Total Jam Kerja</th>
+                    
 
                   </tr>
                 </thead>
@@ -107,7 +107,7 @@ const HomePage: React.FC = () => {
                       <td className="px-4 py-2 text-blue-600 font-medium">08:00</td>
                       <td className="px-4 py-2 text-red-600 font-medium">16:00</td>
                       <td className="px-4 py-2">8 Jam</td>
-                      <td className="px-4 py-2"><Eye className="w-4 h-4 text-blue-600" /></td>
+                      <td className="px-4 py-2"><img src="/img/mdi_eye.png" alt="" /></td>
                     </tr>
                   ))}
                 </tbody>
@@ -135,10 +135,9 @@ const HomePage: React.FC = () => {
                       <td className="px-4 py-2">17/09/2024 13:40</td>
                       <td className="px-4 py-2">Rp 200,000</td>
                       <td className="px-4 py-2 flex gap-2">
-                        <Eye className="w-4 h-4 text-blue-600 mt-1 mr-10" />
-                        <button className="w-7 h-7 flex items-center justify-center rounded-full bg-green-500 text-white text-sm">✓</button>
-                        <button className="w-7 h-7 flex items-center justify-center rounded-full bg-red-500 text-white text-sm">✕</button>
-
+                        <img src="/img/mdi_eye.png" alt="" className="mr-5" />
+                        <button className=""><img src="/img/Button.png" alt="" /></button>
+                        
 
                       </td>
                     </tr>

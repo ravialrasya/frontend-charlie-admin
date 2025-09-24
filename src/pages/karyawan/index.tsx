@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaUser, } from "react-icons/fa6";
 import Sidebar from "../../components/layout/sidebar";
 import Header from "../../components/layout/header";
-import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+
 
 interface Employee {
+  id: number;
   name: string;
   role: string;
 }
@@ -12,30 +15,24 @@ interface Employee {
 export default function Karyawan() {
   const [search, setSearch] = useState("");
   const employees: Employee[] = [
-    { name: "Thomas Seisei", role: "Senior Admin Support" },
-    { name: "Verry Irawan", role: "Senior FullStack Developer" },
-    { name: "Irvan Gunawan", role: "Senior FullStack Developer" },
-    { name: "Salsabila", role: "Senior UI/UX Designer" },
-    { name: "Astrid Faradilla", role: "Staff Admin Support" },
-    { name: "Radian Rasyid", role: "Staff Admin Support" },
-    { name: "Sheila Zahra", role: "Staff Admin Support" },
-    { name: "Sava Alya Andini", role: "Staff Admin Support" },
-    { name: "Tiara Bisrina", role: "Staff Admin Support" },
-    { name: "Amanda", role: "Staff Admin Support" },
-    { name: "Disha Syadiva", role: "Staff Admin Support" },
-    { name: "Winner Chicken", role: "Staff Admin Support" },
+    { id: 1,name: "Thomas Seisei", role: "Senior Admin Support" },
+    { id: 2, name: "Verry Irawan", role: "Senior FullStack Developer" },
+    { id: 3, name: "Irvan Gunawan", role: "Senior FullStack Developer" },
+    { id: 4, name: "Salsabila", role: "Senior UI/UX Designer" },
+    { id: 5, name: "Astrid Faradilla", role: "Staff Admin Support" },
+    { id: 6, name: "Radian Rasyid", role: "Staff Admin Support" },
+    { id: 7, name: "Sheila Zahra", role: "Staff Admin Support" },
+    { id: 8, name: "Sava Alya Andini", role: "Staff Admin Support" },
+    { id: 9, name: "Tiara Bisrina", role: "Staff Admin Support" },
+    { id: 10, name: "Amanda", role: "Staff Admin Support" },
+    { id: 11, name: "Disha Syadiva", role: "Staff Admin Support" },
+    { id: 12, name: "Winner Chicken", role: "Staff Admin Support" },
   ];
 
   const filteredEmployees = employees.filter((emp) =>
     emp.name.toLowerCase().includes(search.toLowerCase())
   );
 
-  const location = useLocation();
-  const pathname = location.pathname;
-
-  useEffect(() => {
-    console.log("Current path:", pathname);
-  }, [pathname])
 
   return (
     <div className="flex bg-[#F6F6F8] font-sans">
@@ -73,16 +70,23 @@ export default function Karyawan() {
           {/* Employee Cards */}
           <div className="grid grid-cols-4 gap-8">
             {filteredEmployees.map((emp, idx) => (
+               
+              <Link to='/detail-karyawan'>
               <div
                 key={idx}
                 className="bg-white h-60 rounded-xl p-6 flex flex-col items-center justify-center hover:shadow-md transition cursor-pointer"
               >
+                
+                  
                 <div className="w-18 h-18 bg-blue-100 rounded-full flex items-center justify-center mb-5">
                   <span className="text-blue-600 text-4xl"><FaUser /></span>
                 </div>
                 <h2 className="font-semibold text-[20px] mb-1">{emp.name}</h2>
                 <p className="text-[15px] text-gray-500">{emp.role}</p>
               </div>
+              </Link>
+
+              
             ))}
           </div>
 
