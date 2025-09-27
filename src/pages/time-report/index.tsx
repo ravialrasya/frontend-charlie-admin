@@ -2,7 +2,11 @@
 import React, { useState } from "react";
 import Sidebar from "../../components/layout/sidebar";
 import Header from "../../components/layout/header";
-import { FaEye, FaChevronLeft, FaChevronRight, FaSort } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
+
+
 
 interface ReportData {
   id: string;
@@ -15,7 +19,7 @@ interface ReportData {
 
 const TimeReportPage: React.FC = () => {
   const [search, setSearch] = useState("");
-  const [date, setDate] = useState("");
+  const [type, setType] = useState<"text" | "date">("text");
 
   const reports: ReportData[] = Array(9).fill({
     id: "B013",
@@ -30,97 +34,118 @@ const TimeReportPage: React.FC = () => {
     r.name.toLowerCase().includes(search.toLowerCase())
   );
 
+  
+
   return (
-    <div className="flex bg-[#F6F6F8] font-sans min-h-screen">
+    <div className="flex bg-[#F6F6F8]  ">
       <Sidebar />
 
       <div className="w-full">
         <Header />
 
         {/* ISI CONTENT */}
-        <div className="p-6">
-          <h2 className="text-lg font-semibold mb-4">Time Report</h2>
+        <div className="p-10">
+          <h2 className="text-[#2F2F2F] text-[20px] font-semibold mb-10">Time Report</h2>
 
           {/* Search & Date */}
-          <div className="flex justify-between mb-4 gap-4">
+          <div className="flex justify-between mb-10 w-full h-[44px] gap-[10px] ">
             <input
               type="text"
               placeholder="Cari nama karyawan"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="border rounded-md px-3 py-2 w-1/3 text-sm focus:outline-none focus:ring focus:ring-blue-200"
+              className=" rounded-md px-3 py-2 w-[379px] text-[14px] outline-none bg-white focus:ring-blue-500 "
             />
             <input
-              type="date"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-              className="border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring focus:ring-blue-200"
+              type={type}
+              onFocus={() => setType("date")}
+              onBlur={(e) => {
+                if (!e.target.value) setType("text");
+              }}
+              placeholder="Pilih Tanggal"
+
+              className=" rounded-md px-3 w-[296px] py-2 text-[14px] outline-none bg-white  focus:ring-blue-500"
             />
           </div>
 
           {/* Table */}
-          <div className="overflow-x-auto overflow-y-hidden bg-white rounded-md shadow">
-            <table className="w-full min-w-[800px] text-sm">
-              <thead>
-                <tr className="bg-gray-50 text-left">
-                  <th className="px-4 py-2">
-                    <div className="flex items-center gap-1">
-                      ID Karyawan <FaSort className="text-gray-400" />
-                    </div>
-                  </th>
-                  <th className="px-4 py-2">
-                    <div className="flex items-center gap-1">
-                      Nama Karyawan <FaSort className="text-gray-400" />
-                    </div>
-                  </th>
-                  <th className="px-4 py-2">
-                    <div className="flex items-center gap-1">
-                      Tanggal <FaSort className="text-gray-400" />
-                    </div>
-                  </th>
-                  <th className="px-4 py-2">
-                    <div className="flex items-center gap-1">
-                      Clock In <FaSort className="text-gray-400" />
-                    </div>
-                  </th>
-                  <th className="px-4 py-2">
-                    <div className="flex items-center gap-1">
-                      Clock Out <FaSort className="text-gray-400" />
-                    </div>
-                  </th>
-                  <th className="px-4 py-2">
-                    <div className="flex items-center gap-1">
-                      Total Jam Kerja <FaSort className="text-gray-400" />
-                    </div>
-                  </th>
-                  <th className="px-4 py-2 text-center">Aksi</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filtered.map((r, i) => (
-                  <tr
-                    key={i}
-                    className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}
-                  >
-                    <td className="px-4 py-2">{r.id}</td>
-                    <td className="px-4 py-2">{r.name}</td>
-                    <td className="px-4 py-2">{r.tanggal}</td>
-                    <td className="px-4 py-2 text-blue-600 font-medium">
-                      {r.clockIn}
-                    </td>
-                    <td className="px-4 py-2 text-red-500 font-medium">
-                      {r.clockOut}
-                    </td>
-                    <td className="px-4 py-2">{r.totalJam}</td>
-                    <td className="px-4 py-2 text-center">
-                      <button className="text-blue-600 hover:text-blue-800">
-                        <FaEye />
-                      </button>
-                    </td>
+          <div className="bg-white p-5 rounded-md shadow w-full h-[654px]">
+            <div className="overflow-x-auto overflow-y-hidden">
+              <table className="w-full h-[614px]  ">
+
+                <thead>
+                  <tr className="bg-white text-[#2F2F2F] font-semibold ">
+                    <th className="px-4 py-2">
+                      <div className="flex text-[14px] ">
+                        ID Karyawan
+                      </div>
+                    </th>
+                    <th className="px-4 py-2 ">
+                      <div className="flex text-[14px]">
+                        Nama Karyawan
+                      </div>
+                    </th>
+                    <th className="px-4 py-2">
+                      <div className="flex text-[14px]">
+                        Tanggal
+                      </div>
+                    </th>
+                    <th className="px-4 py-2">
+                      <div className="flex text-[14px]">
+                        Clock In
+                      </div>
+                    </th>
+                    <th className="px-4 py-2">
+                      <div className="flex text-[14px]">
+                        Clock Out
+                      </div>
+                    </th>
+                    <th className="px-4 py-2">
+                      <div className="flex text-[14px]">
+                        Total Jam Kerja
+                      </div>
+                    </th>
+                    <th className="px-4 py-2 "></th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+
+                <tbody>
+
+                  
+                  {filtered.map((r, i) => (
+                    <tr
+                      key={i}
+                      className={i % 2 === 0 ? "bg-[#F8FAFD]" : "bg-[#FFFFFF]"}
+                    >
+                       
+                        <td className="px-4 py-2 font-md text-[14px] ">{r.id}</td>
+                        <td className="px-4 py-2 font-md text-[14px]">{r.name}</td>
+                        <td className="px-4 py-2 font-md text-[14px]">{r.tanggal}</td>
+                        <td className="px-4 py-2 font-md text-[14px] text-blue-600 ">
+                          {r.clockIn}
+                        </td>
+                        <td className="px-4 py-2 font-semibold text-red-500 ">
+                          {r.clockOut}
+                        </td>
+                        <td className="px-4 py-2 font-md text-[14px]">{r.totalJam}</td>
+                        <td className="px-4 py-2 font-md text-[14px] text-center">
+                          <Link to='/detail-time-report'>
+                          <button className="cursor-pointer">
+                            <img src="/img/mdi_eye.png" alt="" width={24} height={24} />
+                          </button>
+                          </Link>
+                        </td>
+                      
+                     
+
+                    </tr>
+                  ))}
+
+                </tbody>
+
+
+              </table>
+            </div>
           </div>
 
           {/* Footer */}
@@ -129,13 +154,13 @@ const TimeReportPage: React.FC = () => {
               Showing 1 to {filtered.length} of {filtered.length} entries
             </p>
             <div className="flex items-center gap-2">
-              <button className="border rounded-md p-1 hover:bg-gray-100">
+              <button className="border rounded-full p-1 hover:bg-gray-100">
                 <FaChevronLeft size={14} />
               </button>
-              <span className="px-2 py-1 border rounded-md bg-blue-600 text-white">
+              <span className="px-3 py-1 border rounded-full bg-blue-600 text-white">
                 1
               </span>
-              <button className="border rounded-md p-1 hover:bg-gray-100">
+              <button className="border rounded-full p-1 hover:bg-gray-100">
                 <FaChevronRight size={14} />
               </button>
             </div>

@@ -27,7 +27,8 @@ function Sidebar() {
                 <a href="/time-report" className={`flex items-center gap-2 ${pathname === "/time-report" ? "text-blue-600 font-bold" : "text-gray-400"}`}>
                     <MdAccessTime className="text-lg" /> Time Report
                 </a>
-                <a href="#" className="flex items-center gap-2 text-gray-400 hover:text-blue-600">
+                
+                <a href="/absensi" className={`flex items-center gap-2 ${pathname === "/absensi" ? "text-blue-600 font-bold" : "text-gray-400"}`}>
                     <MdOutlineAccessTimeFilled className="text-lg" /> Absensi
                 </a>
                 <a href="#" className="flex items-center gap-2 text-gray-400 hover:text-blue-600">
