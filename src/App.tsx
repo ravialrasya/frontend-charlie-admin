@@ -11,6 +11,7 @@ import Profile from './Profile'
 import DetailTimeReport from './DetailTimeReport'
 import Absensi from './Absensi'
 import AbsensiDetail from './absensidetail'
+import ProposalAdvance from './ProposalAdvice'
 
 
 
@@ -29,6 +30,7 @@ function App() {
       <Route path='/time-report/detail-time-report' element={<DetailTimeReport />}/>
       <Route path='/absensi' element={<Absensi />}/>
       <Route path='/absensi/absensi-detail' element={<AbsensiDetail />}/>
+      <Route path='/proposal-advice' element={<ProposalAdvance />}/>
       
     </Routes>
   )

@@ -33,7 +33,7 @@ function Sidebar() {
                 <a href="/absensi" className={`flex items-center gap-2 ${pathname === "/absensi" ? "text-blue-600 font-bold" : "text-gray-400"}`}>
                     <MdOutlineAccessTimeFilled className="text-lg" /> Absensi
                 </a>
-                <a href="#" className="flex items-center gap-2 text-gray-400 hover:text-blue-600">
+                <a href="/proposal-advice"  className={`flex items-center gap-2 ${pathname === "/proposal-advice" ? "text-blue-600 font-bold" : "text-gray-400"}`}>
                     <MdRequestPage className="text-lg" /> Proposal Advance
                 </a>
             </nav>
