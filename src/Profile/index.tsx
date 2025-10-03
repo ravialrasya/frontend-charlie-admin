@@ -181,7 +181,7 @@ export default function ProfileKaryawan() {
             <div className="mt-6 space-y-4">
               <button
                 onClick={() => setIsEditing(!isEditing)}
-                className="flex items-center gap-2 bg-[#0E64D1] text-white rounded-md text-[14px] px-4 py-2"
+                className="flex items-center gap-2 bg-[#0E64D1] text-white rounded-md text-[14px] px-4 py-2 cursor-pointer"
               >
                 <img src="/img/material-symbols_edit-rounded.png" alt="" />
                 {isEditing ? "Save" : "Edit"}
@@ -299,7 +299,7 @@ export default function ProfileKaryawan() {
             <div className="mt-6 space-y-4">
               <button
                 onClick={() => setIsEditing(!isEditing)}
-                className="flex items-center gap-2 bg-[#0E64D1] text-white rounded-md text-[14px] px-4 py-2"
+                className="flex items-center gap-2 bg-[#0E64D1] text-white rounded-md text-[14px] px-4 py-2 cursor-pointer"
               >
                 <img src="/img/material-symbols_edit-rounded.png" alt="" />
                 {isEditing ? "Save" : "Edit"}

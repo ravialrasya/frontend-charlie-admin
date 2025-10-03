@@ -70,7 +70,7 @@ export default function EmployeeDetail() {
           <p className="text-[#0E64D1]">161188559</p>
           <p className="text-gray-500">Staff Admin</p>
         </div>
-        <button onClick={() => navigate("/profile-karyawan")} className="ml-auto bg-[#0E64D1] px-4 py-2 text-white rounded-lg hover:shadow-md transition cursor-pointer">
+        <button onClick={() => navigate("/karyawan/profile-karyawan")} className="ml-auto bg-[#0E64D1] px-4 py-2 text-white rounded-lg hover:shadow-md transition cursor-pointer">
           Lihat Profil Karyawan
         </button>
       </div>
@@ -146,7 +146,7 @@ export default function EmployeeDetail() {
       </div>
 
       {/* Absensi List */}
-      <Link to='/detail-absensi'>
+      <Link to='/karyawan/detail-absensi'>
       {tab === "Time Report" && (
         <div className="mt-4 space-y-4">
           {absensiData.map((item, index) => (

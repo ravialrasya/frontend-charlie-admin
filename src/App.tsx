@@ -22,13 +22,13 @@ function App() {
       <Route path='/' element={<HomePage />} />
       <Route path='/login' element={<LoginPage />} />
       <Route path='/karyawan' element={<Karyawan />} />
+      <Route path='/karyawan/detail-karyawan' element={<DetailKaryawan/>}/>
+      <Route path='/karyawan/profile-karyawan' element={<Profile />}/>
+      <Route path='/karyawan/detail-absensi' element={<DetailAbsensi />}/>
       <Route path='/time-report' element={<TimeReportPage />} />
-      <Route path='/detail-karyawan' element={<DetailKaryawan/>}/>
-      <Route path='/detail-absensi' element={<DetailAbsensi />}/>
-      <Route path='/profile-karyawan' element={<Profile />}/>
-      <Route path='/detail-time-report' element={<DetailTimeReport />}/>
+      <Route path='/time-report/detail-time-report' element={<DetailTimeReport />}/>
       <Route path='/absensi' element={<Absensi />}/>
-      <Route path='/absensi-detail' element={<AbsensiDetail />}/>
+      <Route path='/absensi/absensi-detail' element={<AbsensiDetail />}/>
       
     </Routes>
   )

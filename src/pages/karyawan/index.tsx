@@ -71,7 +71,7 @@ export default function Karyawan() {
           <div className="grid grid-cols-4 gap-8">
             {filteredEmployees.map((emp, idx) => (
                
-              <Link to='/detail-karyawan'>
+              <Link to='/karyawan/detail-karyawan'>
               <div
                 key={idx}
                 className="bg-white h-60 rounded-xl p-6 flex flex-col items-center justify-center hover:shadow-md transition cursor-pointer"

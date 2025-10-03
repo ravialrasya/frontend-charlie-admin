@@ -5,7 +5,9 @@ import { Link, useLocation } from 'react-router-dom'
 
 function Sidebar() {
     const location = useLocation();
-    const pathname = location.pathname;
+    const getPath = location.pathname;
+    const getSplit = getPath.split("/");
+    const pathname = `/${getSplit[1]}`;
 
     useEffect(() => {
         console.log(pathname);

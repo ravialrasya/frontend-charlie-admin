@@ -1,6 +1,7 @@
 import React from "react";
 import Sidebar from "../../components/layout/sidebar";
 import Header from "../../components/layout/header";
+import { Link } from "react-router-dom";
 
 const HomePage: React.FC = () => {
   return (
@@ -23,7 +24,7 @@ const HomePage: React.FC = () => {
                 <p className=" text-gray-600 mb-1  ">Total Absensi <br />(Office)</p>
                 <p className="text-2xl font-bold">20</p>
               </div>
-              <img src="/img/Vector.png" alt="" width={24} height={24}  />
+              <img src="/img/Vector.png" alt="" width={30} height={28.12}  />
             </div>
             <div className="bg-white shadow rounded-2xl p-4 flex items-center justify-between">
 
@@ -31,7 +32,7 @@ const HomePage: React.FC = () => {
                 <p className="text-sm text-gray-600">Total Absensi<br />(Dinas)</p>
                 <p className="text-2xl font-bold">3</p>
               </div>
-              <img src="/img/Vector (1).png" alt="" width={24} height={24} />
+              <img src="/img/Vector (11).png" alt="" width={22.5} height={20} />
 
             </div>
             <div className="bg-white shadow rounded-2xl p-4 flex  items-center justify-between">
@@ -39,14 +40,14 @@ const HomePage: React.FC = () => {
                 <p className="text-sm text-gray-600">Total Time Report</p>
                 <p className="text-2xl font-bold">15</p>
               </div>
-              <img src="/img/bxs_report.png" alt="" width={24} height={24} />
+              <img src="/img/Vector (10).png" alt="" width={20} height={25} />
             </div>
             <div className="bg-white shadow rounded-2xl p-4 flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600">Total Proposal Advance</p>
                 <p className="text-2xl font-bold">5</p>
               </div>
-              <img src="/img/Vector (2).png" alt="" width={24} height={24} />
+              <img src="/img/Vector (9).png" alt="" width={22.5} height={25} />
             </div>
           </div>
 
@@ -75,7 +76,10 @@ const HomePage: React.FC = () => {
                       <td className="px-4 py-2">Office</td>
                       <td className="px-4 py-2 text-blue-600 font-medium">08:00</td>
                       <td className="px-4 py-2 text-red-600 font-medium">16:00</td>
+                      <Link to='/absensi/absensi-detail'>
                       <td className="px-4 py-2"><img src="/img/mdi_eye.png" alt="" /></td>
+                      </Link>
+                      
                     </tr>
                   ))}
                 </tbody>
@@ -107,7 +111,9 @@ const HomePage: React.FC = () => {
                       <td className="px-4 py-2 text-blue-600 font-medium">08:00</td>
                       <td className="px-4 py-2 text-red-600 font-medium">16:00</td>
                       <td className="px-4 py-2">8 Jam</td>
+                      <Link to='time-report/detail-time-report'>
                       <td className="px-4 py-2"><img src="/img/mdi_eye.png" alt="" /></td>
+                      </Link>
                     </tr>
                   ))}
                 </tbody>

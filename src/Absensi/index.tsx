@@ -129,7 +129,7 @@ const TimeReportPage: React.FC = () => {
                                             </td>
                                             <td className="px-4 py-2 font-md text-[14px]">{r.totalJam}</td>
                                             <td className="px-4 py-2 font-md text-[14px] text-center">
-                                                <Link to='/absensi-detail'>
+                                                <Link to='/absensi/absensi-detail'>
 
                                                 <button className="cursor-pointer">
                                                     <img src="/img/mdi_eye.png" alt="" width={24} height={24} />

@@ -19,8 +19,8 @@ export default function DetailAbsensi() {
         {/* Tombol Close */}
         <button
 
-          onClick={() => navigate("/detail-karyawan")}
-          className="absolute top-6 right-5 text-[#928FA6]"
+          onClick={() => navigate("/karyawan/detail-karyawan")}
+          className="absolute top-6 right-5 text-[#928FA6] cursor-pointer"
         >
 
 

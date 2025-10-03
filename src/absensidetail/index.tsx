@@ -10,7 +10,7 @@ export default function DetailAbsensi() {
     const navigate = useNavigate();
     return (
 
-        <div className="fixed inset-0 flex items-center justify-center z-50 ">
+        <div className="fixed inset-0 flex items-center justify-center z-50  ">
             <div className="absolute inset-0 bg-black/30 z-40"></div>
 
 
@@ -21,7 +21,7 @@ export default function DetailAbsensi() {
                     <button
 
                         onClick={() => navigate("/absensi")}
-                        className="absolute top-6 right-6 text-[#928FA6]"
+                        className="absolute top-6 right-6 text-[#928FA6] cursor-pointer"
                     >
 
 
