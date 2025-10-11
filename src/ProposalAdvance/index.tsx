@@ -223,7 +223,7 @@ const TimeReportPage: React.FC = () => {
                                                 )}
                                             </td>
                                             <td className="px-6 py-3 text-center">
-                                                <Link to="#">
+                                                <Link to="/proposal-advance/detail-proposal-advance">
                                                     <button className="cursor-pointer">
                                                         <img
                                                             src="/img/mdi_eye.png"
