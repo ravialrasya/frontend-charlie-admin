@@ -125,11 +125,13 @@ const TimeReportPage: React.FC = () => {
                     {/* Tombol kanan atas */}
                     <div className="flex justify-end mb-3">
                         <div className="flex gap-2 ">
-                            <button className="bg-[#0E64D1] w-[153px] h-[40px] text-white px-4 py-2 rounded-md text-sm">
+                            <Link to='/proposal-advance/list-request'>
+                            <button className="bg-[#0E64D1] w-[153px] h-[40px] text-white px-4 py-2 rounded-md text-sm cursor-pointer">
                                 List Request
                             </button>
+                            </Link>
                             <div className="justify-center">
-                                <button className="flex items-center gap-3 bg-[#0E64D1] w-[153px] h-[40px]  text-sm text-white px-6 py-2 rounded-md shadow-sm transition">
+                                <button className="flex items-center gap-3 bg-[#0E64D1] w-[153px] h-[40px]  text-sm cursor-pointer text-white px-6 py-2 rounded-md shadow-sm transition">
                                     <img src="/img/Vector (12).png" alt="" width={13.33} height={13.33} />
                                     Download
                                 </button>
@@ -185,7 +187,7 @@ const TimeReportPage: React.FC = () => {
                                         <th className="px-6 py-3">Tanggal Pembayaran</th>
                                         <th className="px-6 py-3">Jumlah</th>
                                         <th className="px-6 py-3">Status</th>
-                                        <th className="px-6 py-3 text-center">Aksi</th>
+                                        
                                     </tr>
                                 </thead>
 

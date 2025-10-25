@@ -2,6 +2,7 @@ import { useState } from "react";
 import Sidebar from "../components/layout/sidebar";
 import Header from "../components/layout/header";
 import { FaChevronLeft, FaDownload } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 interface Expense {
   no: number;
@@ -63,8 +64,10 @@ export default function DetailProposalAdvance() {
         {/* CONTENT */}
         <div className="p-10">
           {/* Title */}
-          <div className="flex items-center gap-2 mb-8">
+          <div className="flex items-center gap-2 mb-6">
+            <Link to='/proposal-advance'>
             <FaChevronLeft className="text-gray-500" />
+            </Link>
             <h2 className="text-[#2F2F2F] text-[20px] font-semibold">
               Detail Proposal Advance
             </h2>
@@ -130,7 +133,7 @@ export default function DetailProposalAdvance() {
 
             {/* Table Section */}
             <div className="bg-white rounded-lg p-8 h-[294px] w-full">
-              <div className="overflow-x-auto overflow-y-auto">
+              <div className="overflow-x-auto ">
                 <table className="w-full text-[14px]">
                   <thead className="bg-white text-left font-semibold">
                     <tr>

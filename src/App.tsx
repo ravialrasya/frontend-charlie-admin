@@ -13,6 +13,10 @@ import Absensi from './Absensi'
 import AbsensiDetail from './absensidetail'
 import ProposalAdvance from './ProposalAdvance'
 import DetailProposalAdvance from './DetailProposalAdvance'
+import ListRequest from './ListRequest'
+import PopUpAgree from './PopUp'
+import PopUpDisAgree from './DisAgreePopUp/Disagree'
+
 
 
 
@@ -34,6 +38,9 @@ function App() {
       <Route path='/absensi/absensi-detail' element={<AbsensiDetail />}/>
       <Route path='/proposal-advance' element={<ProposalAdvance />}/>
       <Route path='/proposal-advance/detail-proposal-advance' element={<DetailProposalAdvance />}/>
+      <Route path='/proposal-advance/list-request' element={<ListRequest />}/>
+      <Route path='/PopUp-Agree' element={<PopUpAgree />}/>
+      <Route path='/PopUp-DisAgree' element={<PopUpDisAgree />}/>
       
     </Routes>
   )
