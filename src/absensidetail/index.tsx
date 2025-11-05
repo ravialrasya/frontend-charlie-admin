@@ -25,7 +25,7 @@ export default function DetailAbsensi() {
                     >
 
 
-                        <X size={25}/>
+                        <X size={25} />
                     </button>
 
                     {/* Header tanggal */}
@@ -52,7 +52,7 @@ export default function DetailAbsensi() {
                         </div>
                     </div>
                     <div className="mt-[40px]"><img src="/img/Line 1.png" alt="" /></div>
-                    <div className="w-[660px] h-[210px] mt-[40px] "> 
+                    <div className="w-[660px] h-[210px] mt-[40px] ">
 
                         <div className="grid grid-cols-2 gap-6">
                             {/* Clock In */}
@@ -60,7 +60,7 @@ export default function DetailAbsensi() {
                                 <h3 className="font-inter text-[16px] text-[#2F2F2F] mb-1">Clock In</h3>
                                 <p className="text-[#0E64D1] text-[16px] font-semibold">08:00</p>
                                 <div className="flex items-start gap-2 mt-2">
-                                    <img src="/img/Vector (3).png" alt="" />
+                                    <img src="/img/carbon_location (2).png" alt="" />
                                     <div>
                                         <p className="text-[#0E64D1] text-[14px] font-semibold mb-1">Lokasi Clock In</p>
                                         <p className="text-[12px] font-inter text-[#928FA6]">
@@ -80,7 +80,7 @@ export default function DetailAbsensi() {
                                 <h3 className="font-inter text-[16px] text-[#2F2F2F] mb-1">Clock Out</h3>
                                 <p className="text-[#F86358] text-[16px] font-semibold">16:00</p>
                                 <div className="flex items-start gap-2 mt-2">
-                                    <img src="/img/Vector (5).png" alt="" />
+                                    <img src="/img/carbon_location.png" alt="" />
                                     <div>
                                         <p className="text-[#F86358] text-[14px] font-semibold mb-1">Lokasi Clock Out</p>
                                         <p className="text-[12px] font-inter text-[#928FA6] ">

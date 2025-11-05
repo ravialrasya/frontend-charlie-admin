@@ -118,17 +118,17 @@ const TimeReportPage: React.FC = () => {
                       className={i % 2 === 0 ? "bg-[#F8FAFD]" : "bg-[#FFFFFF]"}
                     >
                        
-                        <td className="px-4 py-2 font-md text-[14px] ">{r.id}</td>
-                        <td className="px-4 py-2 font-md text-[14px]">{r.name}</td>
-                        <td className="px-4 py-2 font-md text-[14px]">{r.tanggal}</td>
-                        <td className="px-4 py-2 font-md text-[14px] text-blue-600 ">
+                        <td className="px-4 py-2 font-medium text-[#2F2F2F]  text-[14px] ">{r.id}</td>
+                        <td className="px-4 py-2 font-medium  text-[#2F2F2F] text-[14px]">{r.name}</td>
+                        <td className="px-4 py-2 font-reguler text-[#2F2F2F] text-[14px]">{r.tanggal}</td>
+                        <td className="px-4 py-2 font-bold text-[14px] text-[#0E64D1] ">
                           {r.clockIn}
                         </td>
-                        <td className="px-4 py-2 font-semibold text-red-500 ">
+                        <td className="px-4 py-2 font-bold text-[#F86358] ">
                           {r.clockOut}
                         </td>
-                        <td className="px-4 py-2 font-md text-[14px]">{r.totalJam}</td>
-                        <td className="px-4 py-2 font-md text-[14px] text-center">
+                        <td className="px-4 py-2 font-medium text-[#2F2F2F] text-[14px]">{r.totalJam}</td>
+                        <td className="px-4 py-2 font-medium text-[14px] text-center">
                           <Link to='/time-report/detail-time-report'>
                           <button className="cursor-pointer">
                             <img src="/img/mdi_eye.png" alt="" width={24} height={24} />

@@ -1,7 +1,9 @@
 import { useEffect } from 'react'
 import { FaUsers } from 'react-icons/fa6'
-import { MdAccessTime, MdDashboard, MdOutlineAccessTimeFilled, MdRequestPage } from 'react-icons/md'
+import {  MdDashboard, MdOutlineAccessTimeFilled} from 'react-icons/md'
+import { BsFileEarmarkBarGraphFill } from "react-icons/bs";
 import { Link, useLocation } from 'react-router-dom'
+import { HiChatBubbleBottomCenterText } from "react-icons/hi2";
 
 function Sidebar() {
     const location = useLocation();
@@ -27,14 +29,14 @@ function Sidebar() {
                     <FaUsers className="text-lg" />  Karyawan
                 </Link>
                 <a href="/time-report" className={`flex items-center gap-2 ${pathname === "/time-report" ? "text-blue-600 font-bold" : "text-gray-400"}`}>
-                    <MdAccessTime className="text-lg" /> Time Report
+                    <BsFileEarmarkBarGraphFill className="text-lg" /> Time Report
                 </a>
                 
                 <a href="/absensi" className={`flex items-center gap-2 ${pathname === "/absensi" ? "text-blue-600 font-bold" : "text-gray-400"}`}>
                     <MdOutlineAccessTimeFilled className="text-lg" /> Absensi
                 </a>
                 <a href="/proposal-advance"  className={`flex items-center gap-2 ${pathname === "/proposal-advance" ? "text-blue-600 font-bold" : "text-gray-400"}`}>
-                    <MdRequestPage className="text-lg" /> Proposal Advance
+                    <HiChatBubbleBottomCenterText className="text-lg" /> Proposal Advance
                 </a>
             </nav>
         </aside>

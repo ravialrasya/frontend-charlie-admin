@@ -97,33 +97,40 @@ export default function ProfileKaryawan() {
     setFiles((prev) => ({ ...prev, [doc]: file }));
   };
 
-  // render file input
+  // ✅ render file input (versi baru seperti gambar)
   const renderFileInput = (label: string) => (
-    <div key={label} className="border rounded-md p-3 bg-[#EFEFF2]">
+    <div
+      key={label}
+      className="rounded-xl border border-dashed border-[#D0D5DD] bg-[#F9FAFB] p-4 shadow-sm hover:shadow transition"
+    >
       <div className="flex justify-between items-center">
-        <p className="text-sm text-blue-600">
+        <p className="text-sm text-[#0E64D1] font-medium">
           {files[label]?.name || `${label}.jpg`}
         </p>
-        {files[label] && (
+        {files[label] ? (
           <a
             href={URL.createObjectURL(files[label] as File)}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-500 hover:underline text-sm"
+            className="text-[#0E64D1] hover:text-[#084B9A] transition"
           >
             👁️
           </a>
+        ) : (
+          <span className="text-[#0E64D1]">👁️</span>
         )}
       </div>
+
       <input
         type="file"
         accept=".jpg,.jpeg,.png,.pdf"
         disabled={!isEditing}
         onChange={(e) => handleFileChange(e, label)}
-        className="mt-2 text-sm"
+        className="mt-2 text-sm text-gray-500 w-full"
       />
-      <p className="text-xs text-gray-500 mt-1">
-        Unggah file dalam format JPG/PNG/PDF (maks 5 MB)
+
+      <p className="text-xs text-gray-500 mt-2">
+        Unggah file Anda dalam format JPG atau PDF (ukuran maksimum 5 MB)
       </p>
     </div>
   );
@@ -181,7 +188,7 @@ export default function ProfileKaryawan() {
             <div className="mt-6 space-y-4">
               <button
                 onClick={() => setIsEditing(!isEditing)}
-                className="flex items-center gap-2 bg-[#0E64D1] text-white rounded-md text-[14px] px-4 py-2 cursor-pointer"
+                className="flex items-center gap-2 bg-[#0E64D1] text-white rounded-md text-[14px] px-4 py-2 cursor-pointer "
               >
                 <img src="/img/material-symbols_edit-rounded.png" alt="" />
                 {isEditing ? "Save" : "Edit"}
@@ -198,7 +205,7 @@ export default function ProfileKaryawan() {
                       value={employee.name}
                       onChange={handleChange}
                       disabled={!isEditing}
-                      className="w-full h-[51px] rounded-md px-3 py-2 bg-[#EFEFF2] text-[12px] text-[#928FA6]"
+                      className="w-full h-[51px] rounded-md px-3 py-2 bg-[#EFEFF2] text-[12px] text-[#928FA6] "
                     />
                   </div>
 
@@ -236,7 +243,7 @@ export default function ProfileKaryawan() {
                       value={employee.gender}
                       onChange={handleChange}
                       disabled={!isEditing}
-                      className="w-full h-[61px] rounded-md px-3 py-2 bg-[#EFEFF2] text-[12px] text-[#928FA6]"
+                      className="w-full h-[51px] rounded-md px-3 py-2 bg-[#EFEFF2] text-[12px] text-[#928FA6]"
                     />
                   </div>
 
@@ -248,7 +255,7 @@ export default function ProfileKaryawan() {
                       value={employee.agama}
                       onChange={handleChange}
                       disabled={!isEditing}
-                      className="w-full h-[61px] rounded-md px-3 py-2 bg-[#EFEFF2] text-[12px] text-[#928FA6]"
+                      className="w-full h-[51px] rounded-md px-3 py-2 bg-[#EFEFF2] text-[12px] text-[#928FA6]"
                     />
                   </div>
                 </div>
@@ -262,7 +269,7 @@ export default function ProfileKaryawan() {
                       value={employee.tempatLahir}
                       onChange={handleChange}
                       disabled={!isEditing}
-                      className="w-full h-[61px] rounded-md px-3 py-2 bg-[#EFEFF2] text-[12px] text-[#928FA6]"
+                      className="w-full h-[51px] rounded-md px-3 py-2 bg-[#EFEFF2] text-[12px] text-[#928FA6]"
                     />
                   </div>
 
@@ -274,22 +281,24 @@ export default function ProfileKaryawan() {
                       value={employee.tanggalLahir}
                       onChange={handleChange}
                       disabled={!isEditing}
-                      className="w-full h-[61px] rounded-md px-3 py-2 bg-[#EFEFF2] text-[12px] text-[#928FA6]"
+                      className="w-full h-[51px] rounded-md px-3 py-2 bg-[#EFEFF2] text-[12px] text-[#928FA6]"
                     />
                   </div>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 gap-5">
-                <label className="block text-sm mb-1">Alamat</label>
-                <textarea
-                  name="alamat"
-                  value={employee.alamat}
-                  onChange={handleChange}
-                  disabled={!isEditing}
-                  className="w-full h-[105px] rounded-md px-3 py-2 bg-[#EFEFF2] text-[12px] text-[#928FA6]"
-                  rows={3}
-                />
+              <div className="flex justify-end">
+                <div className="">
+                  <label className="block text-sm mb-1">Alamat</label>
+                  <textarea
+                    name="alamat"
+                    value={employee.alamat}
+                    onChange={handleChange}
+                    disabled={!isEditing}
+                    className="w-[526px] h-[80px] rounded-md px-3 py-2 bg-[#EFEFF2] text-[12px] text-[#928FA6]"
+                    rows={3}
+                  />
+                </div>
               </div>
             </div>
           )}
@@ -405,12 +414,11 @@ export default function ProfileKaryawan() {
                   value={employeeWork.salary}
                   onChange={handleChangeWork}
                   disabled={!isEditing}
-                  className="w-full h-[51px] rounded-md px-3 py-2 bg-[#EFEFF2] text-[12px] text-[#928FA6]"
+                  className="w-[670px] h-[51px] rounded-md px-3 py-2 bg-[#EFEFF2] text-[12px] text-[#928FA6]"
                 />
               </div>
 
               {/* Upload Dokumen */}
-              <h2 className="text-[16px] font-semibold mt-6">Upload Dokumen</h2>
               <div className="grid grid-cols-2 gap-5 mt-3">
                 {["KTP", "Tanda Tangan", "NPWP", "Pas Foto"].map(renderFileInput)}
               </div>

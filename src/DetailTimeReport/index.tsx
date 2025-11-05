@@ -139,17 +139,17 @@ export default function DetailTimeReport() {
                                             <td className="px-4 py-2">{t.approval}</td>
                                             <td className="px-4 py-2">
                                                 {t.status === "Menunggu" && (
-                                                    <span className="px-2 py-1 rounded-md bg-gray-100 text-gray-600 text-xs">
+                                                    <span className="px-2 py-1 rounded-md bg-[#928FA6]/10 text-[#928FA6] border border-[#928FA6] text-[14px]">
                                                         Menunggu
                                                     </span>
                                                 )}
                                                 {t.status === "Direvisi" && (
-                                                    <span className="px-2 py-1 rounded-md bg-blue-100 text-blue-600 text-xs">
+                                                    <span className="px-2 py-1 rounded-md bg-[#0E64D1]/10 text-[#0E64D1] border border-[#0E64D1] text-[14px]">
                                                         Direvisi
                                                     </span>
                                                 )}
                                                 {t.status === "Disetujui" && (
-                                                    <span className="px-2 py-1 rounded-md bg-green-100 text-green-600 text-xs">
+                                                    <span className="px-2 py-1 rounded-md bg-[#4CD964]/10 text-[#4CD964] border border-[#4CD964] text-[14px]">
                                                         Disetujui
                                                     </span>
                                                 )}

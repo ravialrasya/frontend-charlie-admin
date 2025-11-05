@@ -1,5 +1,5 @@
 
-
+import { Link } from 'react-router-dom'
 
 function Header() {
     return (
@@ -12,9 +12,11 @@ function Header() {
                         <img src="/img/clarity_notification-line.png" alt="" width={24} height={24}/>
                     </button>
                     </div>
+                    <Link to='/karyawan/profile-karyawan'>
                     <button className="rounded-full bg-[#1176BC1A] w-[40px] h-[40px] cursor-pointer items-center justify-center flex">
                         <img src="/img/user (1) 1.png" alt="" width={20} height={20} />
                     </button>
+                    </Link>
                     <div className="font-medium ">
                         <select className="rounded-lg outline-none py-2 cursor-pointer">
                             <option>
