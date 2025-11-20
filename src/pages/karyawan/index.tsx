@@ -1,86 +1,166 @@
 import { useState } from "react";
-
 import Sidebar from "../../components/layout/sidebar";
 import Header from "../../components/layout/header";
-import { Link } from "react-router-dom";
 
-interface Employee {
-  id: number;
-  name: string;
-  role: string;
+interface Company {
+  perusahaan: string;
+  email: string;
+  penghubung: string;
+  noTelp: string;
+  timeReport: string;
 }
 
-export default function Karyawan() {
-  const [search,] = useState("");
-  const employees: Employee[] = [
-    { id: 1, name: "Thomas Seisei", role: "Senior Admin Support" },
-    { id: 2, name: "Verry Irawan", role: "Senior FullStack Developer" },
-    { id: 3, name: "Irvan Gunawan", role: "Senior FullStack Developer" },
-    { id: 4, name: "Salsabila", role: "Senior UI/UX Designer" },
-    { id: 5, name: "Astrid Faradilla", role: "Staff Admin Support" },
-    { id: 6, name: "Radian Rasyid", role: "Staff Admin Support" },
-    { id: 7, name: "Sheila Zahra", role: "Staff Admin Support" },
-    { id: 8, name: "Sava Alya Andini", role: "Staff Admin Support" },
-    { id: 9, name: "Tiara Bisrina", role: "Staff Admin Support" },
-    { id: 10, name: "Amanda", role: "Staff Admin Support" },
-    { id: 11, name: "Disha Syadiva", role: "Staff Admin Support" },
-    { id: 12, name: "Winner Chicken", role: "Staff Admin Support" },
-  ];
-
-  const filteredEmployees = employees.filter((emp) =>
-    emp.name.toLowerCase().includes(search.toLowerCase())
-  );
+export default function PerusahaanRelasi() {
+  const [data] = useState<Company[]>([
+    {
+      perusahaan: "PT Mineral Alam Abadi 2023",
+      email: "mineralalam@gmail.com",
+      penghubung: "Bpk iman",
+      noTelp: "085311111010",
+      timeReport: "120",
+    },
+    {
+      perusahaan: "PT Mineral Alam Abadi 2023",
+      email: "mineralalam@gmail.com",
+      penghubung: "Bpk iman",
+      noTelp: "085311111010",
+      timeReport: "120",
+    },
+    {
+      perusahaan: "PT Mineral Alam Abadi 2023",
+      email: "mineralalam@gmail.com",
+      penghubung: "Bpk iman",
+      noTelp: "085311111010",
+      timeReport: "120",
+    },
+    {
+      perusahaan: "PT Mineral Alam Abadi 2023",
+      email: "mineralalam@gmail.com",
+      penghubung: "Bpk iman",
+      noTelp: "085311111010",
+      timeReport: "120",
+    },
+  ]);
 
   return (
-    <div className="flex bg-[#F6F6F8] font-sans min-h-screen">
-      {/* Sidebar */}
+    <div className="flex bg-[#F6F6F8]">
       <Sidebar />
 
-      {/* Main Content */}
-      <div className="flex flex-col w-full">
+      <div className="w-full min-h-screen">
         <Header />
 
-        <div className="p-10 bg-[#F6F6F8] flex-1">
-          {/* Title */}
+        <div className="p-10">
+          <h2 className="text-[#2F2F2F] text-[20px] font-semibold mb-10">
+            Perusahaan Relasi
+          </h2>
 
+          {/* TOP BAR — Button + Search */}
+          <div className="flex items-center space-x-5 mb-6">
 
-          {/* Employee Cards */}
-          <div className="p-10">
-            <div className="grid grid-cols-4 gap-8">
-              {filteredEmployees.map((emp, idx) => (
-                <Link to="/karyawan/detail-karyawan" key={idx}>
-                  <div className="bg-white h-60 rounded-xl p-6 flex flex-col items-center justify-center hover:shadow-md transition cursor-pointer">
-                    <div className="w-[67px] h-[67px] flex items-center justify-center rounded-full bg-[#1176BC1A] ">
-                      <img src="/img/user (1) 1.png" alt="" width={33.5} height={33.5} />
-                    </div>
-                    <h2 className="font-semibold text-[18px] mb-1 text-center">
-                      {emp.name}
-                    </h2>
-                    <p className="text-[14px] text-gray-500 text-center">
-                      {emp.role}
-                    </p>
-                  </div>
-                </Link>
-              ))}
-            </div>
+            {/* BUTTON */}
+            <button className="flex items-center gap-2 bg-[#0E64D1] text-white  text-[14px] px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+              <span className="text-xl">+</span>
+              Tambah Perusahaan Relasi
+            </button>
 
-            {/* Footer Info */}
-            <div className="mt-8 text-gray-500 text-sm">
-              Showing 1 to {filteredEmployees.length} of {employees.length} entries
-            </div>
+            {/* SEARCH */}
+            <input
+              type="text"
+              placeholder="Cari nama perusahaan relasi"
+              className="w-[379px] px-4 py-2 rounded-lg  text-[#928FA6] text-[14px] focus:outline-none"
+            />
+          </div>
 
-            {/* Pagination */}
-            <div className="flex justify-end mt-4 space-x-2">
-              <button className="w-8 h-8 flex items-center justify-center border rounded-full hover:bg-gray-100">
-                {"<"}
+          {/* SHOW 1 */}
+          <div className="flex items-center space-x-3 mt-4 px-2 mb-5">
+            <span className="text-[14px] text-gray-500">
+              Showing 1 to 1
+            </span>
+
+            <div className="flex items-center gap-2">
+              <button className="w-8 h-8 rounded-full bg-white border flex items-center justify-center text-gray-500">
+                ‹
               </button>
-              <button className="w-8 h-8 flex items-center justify-center border rounded-full bg-blue-600 text-white">
+
+              <button className="w-8 h-8 rounded-full bg-[#0E64D1] text-white flex items-center justify-center">
                 1
               </button>
-              <button className="w-8 h-8 flex items-center justify-center border rounded-full hover:bg-gray-100">
-                {">"}
+
+              <button className="w-8 h-8 rounded-full bg-white border flex items-center justify-center text-gray-500">
+                ›
               </button>
             </div>
+          </div>
+
+
+
+          {/* TABLE */}
+          <div className="bg-white rounded-xl shadow p-6">
+            <div className="overflow-x-auto rounded-md">
+              <table className="w-full text-[14px]">
+                <thead className="bg-white text-left font-semibold">
+                  <tr >
+                    <th className="px-4 py-3">Perusahaan</th>
+                    <th className="px-4 py-3">Email</th>
+                    <th className="px-4 py-3">Penghubung</th>
+                    <th className="px-4 py-3">no telp</th>
+                    <th className="px-4 py-3">time report (jam)</th>
+                    <th className="px-4 py-3">Aksi</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {data.map((item, i) => (
+                    <tr
+                      key={i}
+                      className={i % 2 === 0 ? "bg-[#F6F6F8]" : "bg-white"}
+                    >
+                      <td className="px-4 py-3">{item.perusahaan}</td>
+                      <td className="px-4 py-3 cursor-pointer underline">{item.email}</td>
+                      <td className="px-4 py-3">{item.penghubung}</td>
+                      <td className="px-4 py-3">{item.noTelp}</td>
+                      <td className="px-4 py-3">{item.timeReport}</td>
+
+                      {/* ICONS */}
+                      <td className="px-4 py-3 flex items-center gap-4">
+
+                        {/* ICON HIJAU — dummy dulu */}
+                        <img
+                          src="/img/Vector (22).png"
+                          className="w-6 h-6 cursor-pointer"
+                        />
+
+                        {/* ICON EDIT — dummy dulu */}
+                        <img
+                          src="/img/Vector (23).png"
+                          className="w-5 h-5 cursor-pointer"
+                        />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* PAGINATION */}
+          <div className="flex items-center justify-end mt-4 px-2">
+
+
+            <div className="flex items-center gap-2">
+              <button className="w-8 h-8 rounded-full bg-white border flex items-center justify-center text-gray-500">
+                ‹
+              </button>
+
+              <button className="w-8 h-8 rounded-full bg-[#0E64D1] text-white flex items-center justify-center">
+                1
+              </button>
+
+              <button className="w-8 h-8 rounded-full bg-white border flex items-center justify-center text-gray-500">
+                ›
+              </button>
+            </div>
+
           </div>
         </div>
       </div>

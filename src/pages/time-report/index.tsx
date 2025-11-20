@@ -1,167 +1,84 @@
-// src/pages/TimeReportPage.tsx
-import React, { useState } from "react";
+import { useState } from "react";
+
 import Sidebar from "../../components/layout/sidebar";
 import Header from "../../components/layout/header";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-
-
-
-interface ReportData {
-  id: string;
+interface Employee {
+  id: number;
   name: string;
-  tanggal: string;
-  clockIn: string;
-  clockOut: string;
-  totalJam: string;
+  role: string;
 }
 
-const TimeReportPage: React.FC = () => {
-  const [search, setSearch] = useState("");
-  const [type, setType] = useState<"text" | "date">("text");
+export default function Karyawan() {
+  const [search,] = useState("");
+  const employees: Employee[] = [
+    { id: 1, name: "Thomas Seisei", role: "Senior Admin Support" },
+    { id: 2, name: "Verry Irawan", role: "Senior FullStack Developer" },
+    { id: 3, name: "Irvan Gunawan", role: "Senior FullStack Developer" },
+    { id: 4, name: "Salsabila", role: "Senior UI/UX Designer" },
+    { id: 5, name: "Astrid Faradilla", role: "Staff Admin Support" },
+    { id: 6, name: "Radian Rasyid", role: "Staff Admin Support" },
+    { id: 7, name: "Sheila Zahra", role: "Staff Admin Support" },
+    { id: 8, name: "Sava Alya Andini", role: "Staff Admin Support" },
+    { id: 9, name: "Tiara Bisrina", role: "Staff Admin Support" },
+    { id: 10, name: "Amanda", role: "Staff Admin Support" },
+    { id: 11, name: "Disha Syadiva", role: "Staff Admin Support" },
+    { id: 12, name: "Winner Chicken", role: "Staff Admin Support" },
+  ];
 
-  const reports: ReportData[] = Array(9).fill({
-    id: "B013",
-    name: "Sava Alya Andini",
-    tanggal: "17/09/2024",
-    clockIn: "08:00",
-    clockOut: "16:00",
-    totalJam: "8 Jam",
-  });
-
-  const filtered = reports.filter((r) =>
-    r.name.toLowerCase().includes(search.toLowerCase())
+  const filteredEmployees = employees.filter((emp) =>
+    emp.name.toLowerCase().includes(search.toLowerCase())
   );
 
-  
-
   return (
-    <div className="flex bg-[#F6F6F8]  ">
+    <div className="flex bg-[#F6F6F8] font-sans min-h-screen">
+      {/* Sidebar */}
       <Sidebar />
 
-      <div className="w-full">
+      {/* Main Content */}
+      <div className="flex flex-col w-full">
         <Header />
 
-        {/* ISI CONTENT */}
-        <div className="p-10">
-          <h2 className="text-[#2F2F2F] text-[20px] font-semibold mb-10">Time Report</h2>
-
-          {/* Search & Date */}
-          <div className="flex justify-between mb-10 w-full h-[44px] gap-[10px] ">
-            <input
-              type="text"
-              placeholder="Cari nama karyawan"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className=" rounded-md px-3 py-2 w-[379px] text-[14px] outline-none bg-white focus:ring-blue-500 "
-            />
-            <input
-              type={type}
-              onFocus={() => setType("date")}
-              onBlur={(e) => {
-                if (!e.target.value) setType("text");
-              }}
-              placeholder="Pilih Tanggal"
-
-              className=" rounded-md px-3 w-[296px] py-2 text-[14px] outline-none bg-white  focus:ring-blue-500"
-            />
-          </div>
-
-          {/* Table */}
-          <div className="bg-white p-5 rounded-md shadow w-full h-[654px]">
-            <div className="overflow-x-auto overflow-y-hidden">
-              <table className="w-full h-[614px]  ">
-
-                <thead>
-                  <tr className="bg-white text-[#2F2F2F] font-semibold ">
-                    <th className="px-4 py-2">
-                      <div className="flex text-[14px] ">
-                        ID Karyawan
-                      </div>
-                    </th>
-                    <th className="px-4 py-2 ">
-                      <div className="flex text-[14px]">
-                        Nama Karyawan
-                      </div>
-                    </th>
-                    <th className="px-4 py-2">
-                      <div className="flex text-[14px]">
-                        Tanggal
-                      </div>
-                    </th>
-                    <th className="px-4 py-2">
-                      <div className="flex text-[14px]">
-                        Clock In
-                      </div>
-                    </th>
-                    <th className="px-4 py-2">
-                      <div className="flex text-[14px]">
-                        Clock Out
-                      </div>
-                    </th>
-                    <th className="px-4 py-2">
-                      <div className="flex text-[14px]">
-                        Total Jam Kerja
-                      </div>
-                    </th>
-                    <th className="px-4 py-2 "></th>
-                  </tr>
-                </thead>
-
-                <tbody>
-
-                  
-                  {filtered.map((r, i) => (
-                    <tr
-                      key={i}
-                      className={i % 2 === 0 ? "bg-[#F8FAFD]" : "bg-[#FFFFFF]"}
-                    >
-                       
-                        <td className="px-4 py-2 font-medium text-[#2F2F2F]  text-[14px] ">{r.id}</td>
-                        <td className="px-4 py-2 font-medium  text-[#2F2F2F] text-[14px]">{r.name}</td>
-                        <td className="px-4 py-2 font-reguler text-[#2F2F2F] text-[14px]">{r.tanggal}</td>
-                        <td className="px-4 py-2 font-bold text-[14px] text-[#0E64D1] ">
-                          {r.clockIn}
-                        </td>
-                        <td className="px-4 py-2 font-bold text-[#F86358] ">
-                          {r.clockOut}
-                        </td>
-                        <td className="px-4 py-2 font-medium text-[#2F2F2F] text-[14px]">{r.totalJam}</td>
-                        <td className="px-4 py-2 font-medium text-[14px] text-center">
-                          <Link to='/time-report/detail-time-report'>
-                          <button className="cursor-pointer">
-                            <img src="/img/mdi_eye.png" alt="" width={24} height={24} />
-                          </button>
-                          </Link>
-                        </td>
-                      
-                     
-
-                    </tr>
-                  ))}
-
-                </tbody>
+        <div className="p-10 bg-[#F6F6F8] flex-1">
+          {/* Title */}
 
 
-              </table>
+          {/* Employee Cards */}
+          <div className="p-10">
+            <div className="grid grid-cols-4 gap-8">
+              {filteredEmployees.map((emp, idx) => (
+                <Link to="/karyawan/detail-karyawan" key={idx}>
+                  <div className="bg-white h-60 rounded-xl p-6 flex flex-col items-center justify-center hover:shadow-md transition cursor-pointer">
+                    <div className="w-[67px] h-[67px] flex items-center justify-center rounded-full bg-[#1176BC1A] ">
+                      <img src="/img/user (1) 1.png" alt="" width={33.5} height={33.5} />
+                    </div>
+                    <h2 className="font-semibold text-[18px] mb-1 text-center">
+                      {emp.name}
+                    </h2>
+                    <p className="text-[14px] text-gray-500 text-center">
+                      {emp.role}
+                    </p>
+                  </div>
+                </Link>
+              ))}
             </div>
-          </div>
 
-          {/* Footer */}
-          <div className="flex items-center justify-between mt-3 text-sm text-gray-600">
-            <p>
-              Showing 1 to {filtered.length} of {filtered.length} entries
-            </p>
-            <div className="flex items-center gap-2">
-              <button className="border rounded-full p-1 hover:bg-gray-100">
-                <FaChevronLeft size={14} />
+            {/* Footer Info */}
+            <div className="mt-8 text-gray-500 text-sm">
+              Showing 1 to {filteredEmployees.length} of {employees.length} entries
+            </div>
+
+            {/* Pagination */}
+            <div className="flex justify-end mt-4 space-x-2">
+              <button className="w-8 h-8 flex items-center justify-center border rounded-full hover:bg-gray-100">
+                {"<"}
               </button>
-              <span className="px-3 py-1 border rounded-full bg-blue-600 text-white">
+              <button className="w-8 h-8 flex items-center justify-center border rounded-full bg-blue-600 text-white">
                 1
-              </span>
-              <button className="border rounded-full p-1 hover:bg-gray-100">
-                <FaChevronRight size={14} />
+              </button>
+              <button className="w-8 h-8 flex items-center justify-center border rounded-full hover:bg-gray-100">
+                {">"}
               </button>
             </div>
           </div>
@@ -169,6 +86,4 @@ const TimeReportPage: React.FC = () => {
       </div>
     </div>
   );
-};
-
-export default TimeReportPage;
+}

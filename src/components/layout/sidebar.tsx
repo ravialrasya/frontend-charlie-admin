@@ -1,9 +1,8 @@
 import { useEffect } from 'react'
-import { FaUsers } from 'react-icons/fa6'
-import {  MdDashboard, MdOutlineAccessTimeFilled} from 'react-icons/md'
+import {  MdDashboard,MdInsertChart} from 'react-icons/md'
 import { BsFileEarmarkBarGraphFill } from "react-icons/bs";
 import { Link, useLocation } from 'react-router-dom'
-import { HiChatBubbleBottomCenterText } from "react-icons/hi2";
+import { HiChatBubbleBottomCenterText, HiMiniBuildingOffice2 } from "react-icons/hi2";
 
 function Sidebar() {
     const location = useLocation();
@@ -26,14 +25,14 @@ function Sidebar() {
                     <MdDashboard className="text-lg" /> Dashboard
                 </Link>
                 <Link to='/karyawan' className={`flex items-center gap-2 ${pathname === "/karyawan" ? "text-blue-600 font-bold" : "text-gray-400"}`}>
-                    <FaUsers className="text-lg" />  Karyawan
+                    <HiMiniBuildingOffice2 className='text-lg'/> Perusahaan Relasi
                 </Link>
                 <a href="/time-report" className={`flex items-center gap-2 ${pathname === "/time-report" ? "text-blue-600 font-bold" : "text-gray-400"}`}>
                     <BsFileEarmarkBarGraphFill className="text-lg" /> Time Report
                 </a>
                 
                 <a href="/absensi" className={`flex items-center gap-2 ${pathname === "/absensi" ? "text-blue-600 font-bold" : "text-gray-400"}`}>
-                    <MdOutlineAccessTimeFilled className="text-lg" /> Absensi
+                    <MdInsertChart className='text-lg'/> Project
                 </a>
                 <a href="/proposal-advance"  className={`flex items-center gap-2 ${pathname === "/proposal-advance" ? "text-blue-600 font-bold" : "text-gray-400"}`}>
                     <HiChatBubbleBottomCenterText className="text-lg" /> Proposal Advance
