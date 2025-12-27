@@ -27,6 +27,7 @@ export const useAuthStore = create<AuthState>((set) => ({
             "Content-Type": "application/json",
           },
           body: JSON.stringify(payload),
+          credentials: "include",
         }
       );
 
