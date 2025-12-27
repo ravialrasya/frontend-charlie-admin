@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Sidebar from "../../components/layout/sidebar";
 import Header from "../../components/layout/header";
+import { Link } from "react-router-dom";
+
 
 interface Company {
   perusahaan: string;
@@ -131,10 +133,12 @@ export default function PerusahaanRelasi() {
                         />
 
                         {/* ICON EDIT — dummy dulu */}
-                        <img
-                          src="/img/Vector (23).png"
-                          className="w-5 h-5 cursor-pointer"
-                        />
+                        <Link to={"/perusahaan-relasi/tambah-perusahaan-relasi"}>
+                          <img
+                            src="/img/Vector (23).png"
+                            className="w-5 h-5 cursor-pointer"
+                          />
+                        </Link>
                       </td>
                     </tr>
                   ))}
@@ -144,10 +148,14 @@ export default function PerusahaanRelasi() {
           </div>
 
           {/* PAGINATION */}
-          <div className="flex items-center justify-end mt-4 px-2">
+          <div className="flex items-center justify-end space-x-3 mt-4 px-2">
+            <span className="text-[14px] text-gray-500">
+              Showing 1 to 1
+            </span>
 
 
             <div className="flex items-center gap-2">
+              
               <button className="w-8 h-8 rounded-full bg-white border flex items-center justify-center text-gray-500">
                 ‹
               </button>

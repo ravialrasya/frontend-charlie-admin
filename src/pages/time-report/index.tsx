@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import Sidebar from "../../components/layout/sidebar";
 import Header from "../../components/layout/header";
 import { Link } from "react-router-dom";
@@ -48,7 +47,7 @@ export default function Karyawan() {
           <div className="p-10">
             <div className="grid grid-cols-4 gap-8">
               {filteredEmployees.map((emp, idx) => (
-                <Link to="/karyawan/detail-karyawan" key={idx}>
+                <Link to="/time-report/detail-time-report" key={idx}>
                   <div className="bg-white h-60 rounded-xl p-6 flex flex-col items-center justify-center hover:shadow-md transition cursor-pointer">
                     <div className="w-[67px] h-[67px] flex items-center justify-center rounded-full bg-[#1176BC1A] ">
                       <img src="/img/user (1) 1.png" alt="" width={33.5} height={33.5} />

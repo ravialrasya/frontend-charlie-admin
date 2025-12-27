@@ -1,5 +1,5 @@
 import { X } from "lucide-react";
-import Absensi from '../Absensi'
+import Absensi from '../Projek'
 import { useNavigate } from "react-router-dom";
 
 
