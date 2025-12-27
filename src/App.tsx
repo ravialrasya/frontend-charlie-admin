@@ -19,42 +19,37 @@ import TambahPerusahaanRelasi from './TambahPerusahaan'
 import TambahProjek from './TambahProjek'
 import DetailTimeReportByDate from "./information";
 import DetailRevisi from "./detailrevisi";
-
-
-
+import ProtectedRoute from './routes/ProtectedRoute'
+import PublicRoute from './routes/PublicRoute'
 
 function App() {
-
   return (
     <Routes>
-      <Route path='/blank' element={<BlankPage />} /> {/* HAPUS JIKA SUDAH TIDAK DIPERLUKAN */}
-
-      <Route path='/' element={<HomePage />} />
-      <Route path='/login' element={<LoginPage />} />
-      <Route path='/perusahaan-relasi' element={<PerusahaanRelasi />} />
-      <Route path='/perusahaan-relasi/tambah-perusahaan-relasi' element={<TambahPerusahaanRelasi />} />
-      <Route path='/perusahaan-relasi/detail-karyawan' element={<DetailKaryawan />} />
-      <Route path='/karyawan/profile-karyawan' element={<Profile />} />
-      <Route path='/karyawan/detail-absensi' element={<DetailAbsensi />} />
-      <Route path="/time-report" element={<TimeReportPage />} />
-      <Route path="/time-report/detail-time-report" element={<DetailTimeReport />} />
+      <Route path='/blank' element={<BlankPage />} /> 
+      <Route path='/' element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
+      <Route path='/login' element={<PublicRoute><LoginPage /></PublicRoute>} />
+      <Route path='/perusahaan-relasi' element={<ProtectedRoute><PerusahaanRelasi /></ProtectedRoute>} />
+      <Route path='/perusahaan-relasi/tambah-perusahaan-relasi' element={<ProtectedRoute><TambahPerusahaanRelasi /></ProtectedRoute>} />
+      <Route path='/perusahaan-relasi/detail-karyawan' element={<ProtectedRoute><DetailKaryawan /></ProtectedRoute>} />
+      <Route path='/karyawan/profile-karyawan' element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+      <Route path='/karyawan/detail-absensi' element={<ProtectedRoute><DetailAbsensi /></ProtectedRoute>} />
+      <Route path="/time-report" element={<ProtectedRoute><TimeReportPage /></ProtectedRoute>} />
+      <Route path="/time-report/detail-time-report" element={<ProtectedRoute><DetailTimeReport /></ProtectedRoute>} />
       <Route
         path="/time-report/detail-time-report/information"
-        element={<DetailTimeReportByDate />}
+        element={<ProtectedRoute><DetailTimeReportByDate /></ProtectedRoute>}
       />
       <Route
         path="/time-report/detail-time-report/information/detail-revisi"
-        element={<DetailRevisi />}
+        element={<ProtectedRoute><DetailRevisi /></ProtectedRoute>}
       />
-      <Route path='/projek' element={<Projek />} />
-      <Route path='/projek/tambah-projek' element={<TambahProjek />} />
-      <Route path='/proposal-advance' element={<ProposalAdvance />} />
-      <Route path='/proposal-advance/detail-proposal-advance' element={<DetailProposalAdvance />} />
-      <Route path='/proposal-advance/list-request' element={<ListRequest />} />
-      <Route path='/PopUp-Agree' element={<PopUpAgree />} />
-      <Route path='/PopUp-DisAgree' element={<PopUpDisAgree />} />
-
-
+      <Route path='/projek' element={<ProtectedRoute><Projek /></ProtectedRoute>} />
+      <Route path='/projek/tambah-projek' element={<ProtectedRoute><TambahProjek /></ProtectedRoute>} />
+      <Route path='/proposal-advance' element={<ProtectedRoute><ProposalAdvance /></ProtectedRoute>} />
+      <Route path='/proposal-advance/detail-proposal-advance' element={<ProtectedRoute><DetailProposalAdvance /></ProtectedRoute>} />
+      <Route path='/proposal-advance/list-request' element={<ProtectedRoute><ListRequest /></ProtectedRoute>} />
+      <Route path='/PopUp-Agree' element={<ProtectedRoute><PopUpAgree /></ProtectedRoute>} />
+      <Route path='/PopUp-DisAgree' element={<ProtectedRoute><PopUpDisAgree /></ProtectedRoute>} />
     </Routes>
   )
 }

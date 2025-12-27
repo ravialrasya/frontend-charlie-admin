@@ -4,8 +4,8 @@ import { useAuthStore } from "../../../store/authStore";
 
 function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("super@gmail.com");
+  const [password, setPassword] = useState("Super1234!");
 
   const navigate = useNavigate();
 

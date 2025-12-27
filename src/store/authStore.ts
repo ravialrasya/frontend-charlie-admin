@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 import type { LoginPayload, LoginResponse } from "../types/auth";
 
 interface AuthState {
@@ -10,53 +11,42 @@ interface AuthState {
   logout: () => void;
 }
 
-export const useAuthStore = create<AuthState>((set) => ({
-  isAuthenticated: false,
-  loading: false,
-  error: null,
+export const useAuthStore = create<AuthState>()(
+  persist(
+    (set) => ({
+      isAuthenticated: false,
+      loading: false,
+      error: null,
 
-  login: async (payload) => {
-    set({ loading: true, error: null });
+      login: async (payload: any) => {
+        set({ loading: true, error: null });
 
-    try {
-      const res = await fetch(
-        "https://api.kapct.co.id/api/v1/auth/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-          credentials: "include",
+        const res = await fetch(
+          "https://api.kapct.co.id/api/v1/auth/login",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+            credentials: "include",
+          }
+        );
+
+        const json: LoginResponse = await res.json();
+
+        if (json.status) {
+          set({ isAuthenticated: true, loading: false });
         }
-      );
+      },
 
-      if (!res.ok) {
-        throw new Error("Login gagal");
-      }
-
-      const json: LoginResponse = await res.json();
-
-      if (json.status) {
-        set({
-          isAuthenticated: true,
-          loading: false,
-        });
-      } else {
-        set({
-          error: json.message || "Login gagal",
-          loading: false,
-        });
-      }
-    } catch (err: any) {
-      set({
-        error: err.message,
-        loading: false,
-      });
+      logout: () => {
+        set({ isAuthenticated: false });
+      },
+    }),
+    {
+      name: "auth-storage",
+      partialize: (state) => ({
+        isAuthenticated: state.isAuthenticated,
+      }),
     }
-  },
-
-  logout: () => {
-    set({ isAuthenticated: false });
-  },
-}));
+  )
+);
