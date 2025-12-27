@@ -28,6 +28,7 @@ function App() {
   return (
     <Routes>
       <Route path='/blank' element={<BlankPage />} /> {/* HAPUS JIKA SUDAH TIDAK DIPERLUKAN */}
+
       <Route path='/' element={<HomePage />} />
       <Route path='/login' element={<LoginPage />} />
       <Route path='/perusahaan-relasi' element={<PerusahaanRelasi />} />
@@ -41,7 +42,6 @@ function App() {
         path="/time-report/detail-time-report/information"
         element={<DetailTimeReportByDate />}
       />
-
       <Route
         path="/time-report/detail-time-report/information/detail-revisi"
         element={<DetailRevisi />}
@@ -58,5 +58,4 @@ function App() {
     </Routes>
   )
 }
-
 export default App
