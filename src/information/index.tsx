@@ -171,7 +171,7 @@ export default function DetailTimeReportByDate() {
                         <button
                           onClick={() =>
                             navigate(
-                              "/detail-time-report/information/detail-revisi",
+                              "/time-report/detail-time-report/information/detail-revisi",
                               { state: { date, month, year } }
                             )
                           }

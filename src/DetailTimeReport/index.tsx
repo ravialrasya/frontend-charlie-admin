@@ -13,7 +13,7 @@ export default function DetailTimeReport() {
   const navigate = useNavigate();
 
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
-  
+
 
   const [currentYear] = useState(new Date().getFullYear());
 
@@ -123,7 +123,7 @@ export default function DetailTimeReport() {
                     onClick={() => {
                       if (!isActive) return;
 
-                      navigate("/detail-time-report/information", {
+                      navigate("/time-report/detail-time-report/information", {
                         state: {
                           date: date,
                           month: currentMonth + 1,
