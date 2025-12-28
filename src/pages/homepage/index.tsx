@@ -32,6 +32,12 @@ const HomePage: React.FC = () => {
     value: item.total_hour,
   })) || [];
 
+  useEffect(() => {
+    console.log(data, "DATA: ");
+    
+  }, [])
+  
+
   return (
     <div className="flex bg-[#F6F6F8] min-h-screen">
       <Sidebar />
@@ -41,7 +47,7 @@ const HomePage: React.FC = () => {
 
         <div className="p-10 bg-gray-100 flex-1">
           {/* ===== LOADING STATE (TIDAK HILANGKAN LAYOUT) ===== */}
-          {loading || !data ? (
+          {loading ? (
             <div className="flex items-center justify-center h-full">
               <p className="text-gray-500 text-lg">
                 Loading dashboard...
@@ -63,7 +69,7 @@ const HomePage: React.FC = () => {
                       Total Perusahaan <br /> Relasi
                     </p>
                     <p className="text-[16px] font-bold">
-                      {data.total_companies}
+                      {data?.total_companies}
                     </p>
                   </div>
                   <img src="/img/Vector.png" alt="" width={30} />
@@ -75,7 +81,7 @@ const HomePage: React.FC = () => {
                       Total Projek
                     </p>
                     <p className="text-[16px] font-bold">
-                      {data.total_projects}
+                      {data?.total_projects}
                     </p>
                   </div>
                   <img src="/img/Vector (21).png" alt="" width={22} />
@@ -87,7 +93,7 @@ const HomePage: React.FC = () => {
                       Jumlah Karyawan
                     </p>
                     <p className="text-[16px] font-bold">
-                      {data.total_employees}
+                      {data?.total_employees}
                     </p>
                   </div>
                   <img src="/img/Vector.png" alt="" width={30} />

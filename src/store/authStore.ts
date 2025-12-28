@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { LoginPayload, LoginResponse } from "../types/auth";
+import { api } from "../lib/axios";
 
 interface AuthState {
   isAuthenticated: boolean;
@@ -18,23 +19,33 @@ export const useAuthStore = create<AuthState>()(
       loading: false,
       error: null,
 
-      login: async (payload: any) => {
+      login: async (payload: LoginPayload) => {
         set({ loading: true, error: null });
 
-        const res = await fetch(
-          "https://api.kapct.co.id/api/v1/auth/login",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload),
-            credentials: "include",
+        try {
+          const res = await api.post<LoginResponse>("/auth/login", payload);
+
+          if (res.data.status) {
+            set({
+              isAuthenticated: true,
+              loading: false,
+            });
+          } else {
+            set({
+              error: "Login gagal",
+              loading: false,
+            });
           }
-        );
+        } catch (err: any) {
+          console.error("LOGIN ERROR:", err);
 
-        const json: LoginResponse = await res.json();
-
-        if (json.status) {
-          set({ isAuthenticated: true, loading: false });
+          set({
+            error:
+              err.response?.data?.message ||
+              err.message ||
+              "Terjadi kesalahan",
+            loading: false,
+          });
         }
       },
 

@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import type { DashboardData, DashboardResponse } from "../types/dashboard";
+import { api } from "../lib/axios";
 
 interface DashboardState {
   data: DashboardData | null;
@@ -18,19 +19,15 @@ export const useDashboardStore = create<DashboardState>((set) => ({
     set({ loading: true, error: null });
 
     try {
-      const res = await fetch(
-        "https://api.kapct.co.id/api/v1/company/dashboard"
+      const res = await api.get<DashboardResponse>(
+        "/company/dashboard", { withCredentials: true }
       );
 
-      if (!res.ok) {
-        throw new Error("Gagal mengambil dashboard");
-      }
+      console.log(res, "GET DATA");
 
-      const json: DashboardResponse = await res.json();
-
-      if (json.status) {
+      if (res.data.status) {
         set({
-          data: json.data,
+          data: res.data.data,
           loading: false,
         });
       } else {
@@ -40,8 +37,13 @@ export const useDashboardStore = create<DashboardState>((set) => ({
         });
       }
     } catch (err: any) {
+      console.error("ERROR:", err);
+
       set({
-        error: err.message,
+        error:
+          err.response?.data?.message ||
+          err.message ||
+          "Terjadi kesalahan",
         loading: false,
       });
     }
