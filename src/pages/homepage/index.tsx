@@ -45,7 +45,7 @@ const HomePage: React.FC = () => {
       <div className="w-full flex flex-col">
         <Header />
 
-        <div className="p-10 bg-gray-100 flex-1">
+        <div className="p-10 bg-[#F6F6F8] flex-1">
           {/* ===== LOADING STATE (TIDAK HILANGKAN LAYOUT) ===== */}
           {loading ? (
             <div className="flex items-center justify-center h-full">
@@ -57,8 +57,7 @@ const HomePage: React.FC = () => {
             <>
               {/* ===== TITLE ===== */}
               <div className="ml-6 mb-6">
-                <h1 className="text-xl font-semibold mb-1">Dashboard</h1>
-                <p className="text-sm text-gray-500">Company Overview</p>
+                
               </div>
 
               {/* ===== STATS CARDS ===== */}

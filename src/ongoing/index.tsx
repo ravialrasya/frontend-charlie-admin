@@ -16,7 +16,7 @@ interface OnGoing {
 }
 
 const TimeReportPage: React.FC = () => {
-    const [search, setSearch] = useState("");
+    const [search, ] = useState("");
     const [type, setType] = useState<"text" | "date">("text");
     const [statusFilter, setStatusFilter] = useState("");
 
@@ -123,9 +123,7 @@ const TimeReportPage: React.FC = () => {
 
                 <div className="p-10">
                     {/* TITLE */}
-                    <h2 className="text-[#2F2F2F] text-[20px] font-semibold mb-6">
-                        Proposal Advance
-                    </h2>
+                    
 
                     {/* HEADER CARD */}
                     <div className="flex gap-6 mb-6">
@@ -149,15 +147,8 @@ const TimeReportPage: React.FC = () => {
                     </div>
 
                     {/* FILTER */}
-                    <div className="flex items-center justify-between mb-6">
-                        <input
-                            type="text"
-                            placeholder="Cari penanggung jawab"
-                            value={search}
-                            onChange={(e) => setSearch(e.target.value)}
-                            className="rounded-md px-4 py-2 w-[300px] text-[14px] bg-white outline-none"
-                        />
-
+                    <div className="flex items-center justify-end mb-6">
+                        
                         <div className="flex gap-3">
                             <input
                                 type={type}

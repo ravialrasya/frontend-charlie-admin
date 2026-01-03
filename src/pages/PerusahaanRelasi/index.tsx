@@ -45,17 +45,16 @@ export default function PerusahaanRelasi() {
   ]);
 
   return (
-    <div className="flex bg-[#F6F6F8]">
+    <div className="flex bg-[#F6F6F8] min-h-screen">
       <Sidebar />
 
-      <div className="w-full min-h-screen">
+      <div className="w-full">
         <Header />
 
         <div className="p-10">
-          <h2 className="text-[#2F2F2F] text-[20px] font-semibold mb-10">
-            Perusahaan Relasi
-          </h2>
-
+          <div className="ml-6 mb-6">
+                
+              </div>
           {/* TOP BAR — Button + Search */}
           <div className="flex items-center space-x-5 mb-6">
 

@@ -69,7 +69,7 @@ const ProjectPage: React.FC = () => {
             <div className="w-full">
                 <Header />
 
-                <div className="p-10 bg-gray-100 ">
+                <div className="p-10 bg-[#F6F6F8] ">
                     {/* Main white card sized like design */}
 
                     {/* Title + Button */}

@@ -31,7 +31,7 @@ export default function Karyawan() {
   );
 
   return (
-    <div className="flex bg-[#F6F6F8] font-sans min-h-screen">
+    <div className="flex bg-[#F6F6F6] font-sans min-h-screen">
       {/* Sidebar */}
       <Sidebar />
 
@@ -62,12 +62,10 @@ export default function Karyawan() {
                 </Link>
               ))}
             </div>
-
             {/* Footer Info */}
             <div className="mt-8 text-gray-500 text-sm">
               Showing 1 to {filteredEmployees.length} of {employees.length} entries
             </div>
-
             {/* Pagination */}
             <div className="flex justify-end mt-4 space-x-2">
               <button className="w-8 h-8 flex items-center justify-center border rounded-full hover:bg-gray-100">
