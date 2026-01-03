@@ -21,6 +21,8 @@ import DetailTimeReportByDate from "./information";
 import DetailRevisi from "./detailrevisi";
 import ProtectedRoute from './routes/ProtectedRoute'
 import PublicRoute from './routes/PublicRoute'
+import OnGoing from './ongoing/index'
+import Closed from './closed/index'
 
 function App() {
   return (
@@ -46,6 +48,8 @@ function App() {
       <Route path='/projek' element={<ProtectedRoute><Projek /></ProtectedRoute>} />
       <Route path='/projek/tambah-projek' element={<ProtectedRoute><TambahProjek /></ProtectedRoute>} />
       <Route path='/proposal-advance' element={<ProtectedRoute><ProposalAdvance /></ProtectedRoute>} />
+      <Route path='/proposal-advance/on-going' element={<ProtectedRoute><OnGoing /></ProtectedRoute>} />
+      <Route path='/proposal-advance/closed' element={<ProtectedRoute><Closed /></ProtectedRoute>} />
       <Route path='/proposal-advance/detail-proposal-advance' element={<ProtectedRoute><DetailProposalAdvance /></ProtectedRoute>} />
       <Route path='/proposal-advance/list-request' element={<ProtectedRoute><ListRequest /></ProtectedRoute>} />
       <Route path='/PopUp-Agree' element={<ProtectedRoute><PopUpAgree /></ProtectedRoute>} />
