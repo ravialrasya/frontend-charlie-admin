@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../store/authStore";
+import { ChevronDown, LogOut, User } from "lucide-react";
 
 function Header() {
     const [open, setOpen] = useState(false);
@@ -8,7 +9,6 @@ function Header() {
     const navigate = useNavigate();
     const logout = useAuthStore((state) => state.logout);
 
-    // close dropdown saat klik di luar
     useEffect(() => {
         const handleClickOutside = (e: MouseEvent) => {
             if (
@@ -20,56 +20,94 @@ function Header() {
         };
 
         document.addEventListener("mousedown", handleClickOutside);
-        return () => document.removeEventListener("mousedown", handleClickOutside);
+        return () =>
+            document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
     const handleLogout = () => {
-        logout();              // Zustand logout
-        navigate("/login");    // redirect ke login
+        logout();
+        navigate("/login");
     };
-    
+
     return (
-        <div className="w-full bg-white shadow-sm">
-            <header className="py-3 px-6">
-                <div className="flex justify-end gap-4 relative" ref={dropdownRef}>
-
-                    {/* Avatar */}
+        <header className="w-full h-16 bg-white border-b border-gray-100">
+            <div className="h-full px-6 flex items-center justify-end">
+                <div
+                    ref={dropdownRef}
+                    className="relative flex items-center gap-3"
+                >
+                    {/* USER BUTTON */}
                     <button
                         onClick={() => setOpen(!open)}
-                        className="rounded-full bg-[#1176BC1A] w-[40px] h-[40px] cursor-pointer flex items-center justify-center"
+                        className="
+              flex items-center gap-3
+              px-3 py-2 rounded-full
+              hover:bg-gray-100
+              transition-all duration-200
+            "
                     >
-                        <img src="/img/user (1) 1.png" alt="user" width={20} height={20} />
+                        <div className="w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center">
+                            <img
+                                src="/img/user (1) 1.png"
+                                alt="user"
+                                className="w-4 h-4"
+                            />
+                        </div>
+
+                        <span className="text-sm font-medium text-gray-700">
+                            Kathy Murphy
+                        </span>
+
+                        <ChevronDown
+                            size={16}
+                            className={`transition-transform ${open ? "rotate-180" : ""
+                                }`}
+                        />
                     </button>
 
-                    {/* Nama */}
-                    <button
-                        onClick={() => setOpen(!open)}
-                        className="font-medium cursor-pointer"
-                    >
-                        Kathy Murphy
-                    </button>
-
-                    {/* Dropdown */}
+                    {/* DROPDOWN */}
                     {open && (
-                        <div className="absolute right-0 top-14 w-40 bg-white rounded-lg shadow-md">
+                        <div
+                            className="
+                absolute right-0 top-14 w-48
+                bg-white rounded-2xl
+                shadow-xl border border-gray-100
+                overflow-hidden
+                animate-fade-in
+              "
+                        >
                             <button
-                                onClick={() =>  navigate("/karyawan/profile-karyawan")}
-                                className="w-full text-left px-4 py-2 text-blue-600 hover:bg-gray-100 rounded-lg cursor-pointer"
+                                onClick={() =>
+                                    navigate("/karyawan/profile-karyawan")
+                                }
+                                className="
+                  w-full px-4 py-3 text-left
+                  flex items-center gap-3
+                  text-gray-700 hover:bg-gray-50
+                  transition
+                "
                             >
+                                <User size={16} />
                                 Profile
                             </button>
+
                             <button
                                 onClick={handleLogout}
-                                className="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100 rounded-lg cursor-pointer"
+                                className="
+                  w-full px-4 py-3 text-left
+                  flex items-center gap-3
+                  text-red-600 hover:bg-red-50
+                  transition
+                "
                             >
+                                <LogOut size={16} />
                                 Logout
                             </button>
                         </div>
                     )}
-
                 </div>
-            </header>
-        </div>
+            </div>
+        </header>
     );
 }
 

@@ -31,15 +31,15 @@ export default function Karyawan() {
   );
 
   return (
-    <div className="flex bg-[#F6F6F6] font-sans min-h-screen">
+    <div className="flex bg-[#F6F6F6] min-h-screen">
       {/* Sidebar */}
       <Sidebar />
 
       {/* Main Content */}
-      <div className="flex flex-col w-full">
+      <div className=" flex-1">
         <Header />
 
-        <div className="p-10 bg-[#F6F6F8] flex-1">
+        <div className="p-10 bg-[#F6F6F8]">
           {/* Title */}
 
 

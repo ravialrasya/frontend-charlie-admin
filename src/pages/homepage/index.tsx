@@ -1,14 +1,20 @@
 import React, { useEffect } from "react";
 import Sidebar from "../../components/layout/sidebar";
 import Header from "../../components/layout/header";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid } from "recharts";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 import { useDashboardStore } from "../../store/dashboardStore";
 
 const generateTicks = (max: number, step: number) => {
   const ticks = [];
-  for (let i = 0; i <= max; i += step) {
-    ticks.push(i);
-  }
+  for (let i = 0; i <= max; i += step) ticks.push(i);
   return ticks;
 };
 
@@ -21,153 +27,147 @@ const HomePage: React.FC = () => {
     fetchDashboard();
   }, [fetchDashboard]);
 
-  // ===== transform API data (aman walau data null) =====
-  const companyChartData = data?.top_companies?.map((item) => ({
-    name: item.company,
-    value: item.total_hour,
-  })) || [];
+  const companyChartData =
+    data?.top_companies?.map((item) => ({
+      name: item.company,
+      value: item.total_hour,
+    })) || [];
 
-  const projectChartData = data?.top_projects?.map((item) => ({
-    name: item.project,
-    value: item.total_hour,
-  })) || [];
-
-  useEffect(() => {
-    console.log(data, "DATA: ");
-    
-  }, [])
-  
+  const projectChartData =
+    data?.top_projects?.map((item) => ({
+      name: item.project,
+      value: item.total_hour,
+    })) || [];
 
   return (
-    <div className="flex bg-[#F6F6F8] min-h-screen">
+    <div className="flex min-h-screen bg-[#F6F7FB]">
       <Sidebar />
 
-      <div className="w-full flex flex-col">
+      <div className="flex-1">
         <Header />
 
-        <div className="p-10 bg-[#F6F6F8] flex-1">
-          {/* ===== LOADING STATE (TIDAK HILANGKAN LAYOUT) ===== */}
+        <div className="px-8 py-6">
           {loading ? (
             <div className="flex items-center justify-center h-full">
-              <p className="text-gray-500 text-lg">
-                Loading dashboard...
-              </p>
+              <p className="text-gray-500 text-lg">Loading dashboard...</p>
             </div>
           ) : (
             <>
-              {/* ===== TITLE ===== */}
-              <div className="ml-6 mb-6">
-                
-              </div>
-
-              {/* ===== STATS CARDS ===== */}
-              <div className="grid grid-cols-4 gap-8 p-6 cursor-pointer">
-                <div className="bg-white shadow rounded-2xl p-4 flex items-center justify-between h-28">
-                  <div>
-                    <p className="text-[#928FA6] text-[16px] mb-1">
-                      Total Perusahaan <br /> Relasi
-                    </p>
-                    <p className="text-[16px] font-bold">
-                      {data?.total_companies}
-                    </p>
-                  </div>
-                  <img src="/img/Vector.png" alt="" width={30} />
-                </div>
-
-                <div className="bg-white shadow rounded-2xl p-4 flex items-center justify-between h-28">
-                  <div>
-                    <p className="text-[#928FA6] text-[16px]">
-                      Total Projek
-                    </p>
-                    <p className="text-[16px] font-bold">
-                      {data?.total_projects}
-                    </p>
-                  </div>
-                  <img src="/img/Vector (21).png" alt="" width={22} />
-                </div>
-
-                <div className="bg-white shadow rounded-2xl p-4 flex items-center justify-between h-28">
-                  <div>
-                    <p className="text-[#928FA6] text-[16px]">
-                      Jumlah Karyawan
-                    </p>
-                    <p className="text-[16px] font-bold">
-                      {data?.total_employees}
-                    </p>
-                  </div>
-                  <img src="/img/Vector.png" alt="" width={30} />
-                </div>
-
-                <div className="bg-white shadow rounded-2xl p-4 flex items-center justify-between h-28">
-                  <div>
-                    <p className="text-[#928FA6] text-[16px]">
-                      Proposal Advance
-                    </p>
-                    <p className="text-[16px] font-bold">5</p>
-                  </div>
-                  <img src="/img/Vector.png" alt="" width={30} />
-                </div>
-              </div>
-
-              {/* ===== CHART SECTION ===== */}
-              <div className="px-6 mt-10">
-                <div className="grid grid-cols-2 gap-10">
-
-                  {/* ===== CHART 1 ===== */}
-                  <div className="flex flex-col">
-                    <h1 className="text-[22px] font-semibold mb-4">
-                      5 Perusahaan Time Report Tertinggi
-                    </h1>
-
-                    <div className="bg-white shadow rounded-2xl h-[420px] flex items-center justify-center">
-                      <BarChart
-                        width={490}
-                        height={310}
-                        data={companyChartData}
-                      >
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="name" tick={{ fontSize: 12 }} />
-                        <YAxis
-                          ticks={generateTicks(maxValue, 5)}
-                          tick={{ fontSize: 12 }}
-                        />
-                        <Bar
-                          dataKey="value"
-                          fill="#0E64D1"
-                          radius={[6, 6, 0, 0]}
-                        />
-                      </BarChart>
+              {/* ================= STATS CARDS ================= */}
+              <div className="grid grid-cols-4 gap-6 mb-10">
+                {[
+                  {
+                    label: "Total Perusahaan Relasi",
+                    value: data?.total_companies,
+                    icon: "/img/Vector.png",
+                  },
+                  {
+                    label: "Total Projek",
+                    value: data?.total_projects,
+                    icon: "/img/Vector (21).png",
+                  },
+                  {
+                    label: "Jumlah Karyawan",
+                    value: data?.total_employees,
+                    icon: "/img/Vector.png",
+                  },
+                  {
+                    label: "Proposal Advance",
+                    value: 5,
+                    icon: "/img/Vector.png",
+                  },
+                ].map((item, index) => (
+                  <div
+                    key={index}
+                    className="
+                      bg-white rounded-3xl p-6 h-28
+                      shadow-sm hover:shadow-lg
+                      transition-all duration-300
+                      hover:-translate-y-1
+                      cursor-pointer
+                    "
+                  >
+                    <div className="flex items-center justify-between h-full">
+                      <div>
+                        <p className="text-sm text-[#8C8CA1] leading-snug">
+                          {item.label}
+                        </p>
+                        <p className="text-2xl font-bold text-gray-800 mt-1">
+                          {item.value}
+                        </p>
+                      </div>
+                      <div className="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center">
+                        <img src={item.icon} alt="" width={22} />
+                      </div>
                     </div>
                   </div>
+                ))}
+              </div>
 
-                  {/* ===== CHART 2 ===== */}
-                  <div className="flex flex-col">
-                    <h1 className="text-[22px] font-semibold mb-4">
-                      5 Project Time Report Tertinggi
-                    </h1>
+              {/* ================= CHART SECTION ================= */}
+              <div className="grid grid-cols-2 gap-8">
+                {/* ===== CHART CARD ===== */}
+                {[
+                  {
+                    title: "5 Perusahaan Time Report Tertinggi",
+                    data: companyChartData,
+                  },
+                  {
+                    title: "5 Project Time Report Tertinggi",
+                    data: projectChartData,
+                  },
+                ].map((chart, index) => (
+                  <div
+                    key={index}
+                    className="
+                      bg-white rounded-3xl
+                      shadow-sm hover:shadow-lg
+                      transition-all duration-300
+                      p-6
+                    "
+                  >
+                    <h2 className="text-lg font-semibold mb-4 text-gray-800">
+                      {chart.title}
+                    </h2>
 
-                    <div className="bg-white shadow rounded-2xl h-[420px] flex items-center justify-center">
-                      <BarChart
-                        width={490}
-                        height={310}
-                        data={projectChartData}
-                      >
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="name" tick={{ fontSize: 12 }} />
-                        <YAxis
-                          ticks={generateTicks(maxValue, 5)}
-                          tick={{ fontSize: 12 }}
-                        />
-                        <Bar
-                          dataKey="value"
-                          fill="#0E64D1"
-                          radius={[6, 6, 0, 0]}
-                        />
-                      </BarChart>
+                    <div className="h-[320px]">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <BarChart data={chart.data}>
+                          <CartesianGrid
+                            strokeDasharray="3 3"
+                            stroke="#E5E7EB"
+                          />
+                          <XAxis
+                            dataKey="name"
+                            tick={{ fontSize: 12 }}
+                            tickLine={false}
+                            axisLine={false}
+                          />
+                          <YAxis
+                            ticks={generateTicks(maxValue, 5)}
+                            tick={{ fontSize: 12 }}
+                            tickLine={false}
+                            axisLine={false}
+                          />
+                          <Tooltip
+                            cursor={{ fill: "#EEF2FF" }}
+                            contentStyle={{
+                              borderRadius: 12,
+                              border: "none",
+                              boxShadow:
+                                "0 10px 25px rgba(0,0,0,0.1)",
+                            }}
+                          />
+                          <Bar
+                            dataKey="value"
+                            fill="#2563EB"
+                            radius={[8, 8, 0, 0]}
+                          />
+                        </BarChart>
+                      </ResponsiveContainer>
                     </div>
                   </div>
-
-                </div>
+                ))}
               </div>
             </>
           )}

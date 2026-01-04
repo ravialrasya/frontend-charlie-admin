@@ -59,7 +59,7 @@ const ClosedProposalAdvancePage: React.FC = () => {
   return (
     <div className="flex bg-[#F6F6F8]">
       <Sidebar />
-      <div className="w-full">
+      <div className="flex-1">
         <Header />
 
         <div className="p-10">
