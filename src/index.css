@@ -2,8 +2,8 @@
 
 body {
     font-family: "Montserrat", sans-serif;
-    height: 1024;
-    width: 1440;
+    /* height: 1024;
+    width: 1440; */
 }
 
 @keyframes fade-in {
